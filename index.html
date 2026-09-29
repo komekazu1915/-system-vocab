@@ -2,21 +2,22 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#07101d">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f3f6f8">
 <title>シス単 SRS 2027</title>
 <style>
-:root{--bg:#07101d;--panel:#101c2f;--panel2:#0a1424;--line:#2b3d56;--text:#f8fafc;--muted:#98a9bd;--blue:#60a5fa;--green:#34d399;--amber:#fbbf24;--red:#fb7185;--purple:#a78bfa}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -12%,#1c3458 0,#0b1627 34%,#050c16 80%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif}body{min-height:100vh;min-height:100dvh}button,input,select{font:inherit}button{cursor:pointer}.shell{width:min(780px,100%);margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 14px calc(32px + env(safe-area-inset-bottom))}.brand{display:flex;align-items:flex-end;justify-content:space-between;margin:2px 4px 14px}.brand h1{font-size:22px;margin:0;letter-spacing:.01em}.brand small{color:var(--muted)}.card{background:rgba(15,27,46,.97);border:1px solid var(--line);border-radius:23px;padding:17px;box-shadow:0 22px 70px rgba(0,0,0,.28);margin-bottom:12px}.hidden{display:none!important}.sectionTitle{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.08em;margin:4px 2px 9px}.todayGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:var(--panel2);border:1px solid #233650;border-radius:15px;padding:11px 7px;text-align:center}.metric b{display:block;font-size:21px}.metric span{font-size:11px;color:var(--muted)}.stageGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stage{background:#0a1424;border:1px solid #253954;border-radius:16px;padding:12px}.stageHead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}.stageHead b{font-size:14px}.stagePct{font-size:22px;font-weight:900}.stageMeta{font-size:10px;color:var(--muted);margin-top:5px}.bar{height:7px;background:#1a2b42;border-radius:99px;overflow:hidden;margin-top:8px}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:99px}.combined{margin-top:9px;background:linear-gradient(135deg,rgba(96,165,250,.13),rgba(52,211,153,.08));border:1px solid #335074;border-radius:16px;padding:12px;display:flex;justify-content:space-between;align-items:center}.combined strong{font-size:25px}.stage,.combined{cursor:pointer}.stage:active,.combined:active{transform:scale(.99)}
-.stageDetail{margin-top:10px;background:#091525;border:1px solid #335074;border-radius:17px;padding:14px}
-.stageDetailHead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
-.stageDetailHead b{font-size:17px}.stageDetailHead strong{font-size:26px}
-.detailGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.detailMetric{background:#0d1b2e;border:1px solid #263c58;border-radius:13px;padding:10px;text-align:center}
-.detailMetric b{display:block;font-size:18px}.detailMetric span{font-size:10px;color:var(--muted)}
-.stageDetailActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.formGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:9px}.field label{display:block;color:var(--muted);font-size:11px;margin:0 0 5px 2px}.field select,.field input{width:100%;background:#091525;color:var(--text);border:1px solid #2a3e59;border-radius:12px;padding:12px 10px;outline:none}.rangeGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}.primary,.secondary,.danger,.soft{border:0;border-radius:14px;padding:14px 13px;font-weight:800;font-size:15px}.primary{background:#f8fafc;color:#07101d}.secondary{background:#17273e;color:#eff6ff;border:1px solid #314965}.soft{background:#0a1728;color:#d9e7f7;border:1px solid #2b405b}.danger{background:#341723;color:#fecdd3;border:1px solid #713247}.wide{width:100%}.actionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}.hint{font-size:11px;color:var(--muted);line-height:1.6;margin-top:9px}.topbar{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;margin-bottom:10px}.progress{height:6px;background:#1a2a41;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:#e5edf7;width:0;transition:.2s}.wordArea{text-align:center;padding:28px 8px 18px}.wordNo{font-size:12px;color:var(--muted)}.word{font-size:42px;font-weight:900;letter-spacing:-.02em;margin:8px 0 9px;overflow-wrap:anywhere}.stageTag{display:inline-block;padding:5px 9px;border-radius:99px;background:#162940;color:#bcd0e8;font-size:11px}.timer{color:#7f94ad;font-size:12px;margin-top:12px}.answerBox{background:#091525;border:1px solid #2b405b;border-radius:18px;padding:18px 14px;text-align:center;font-size:20px;font-weight:700;line-height:1.55;margin:4px 0 12px}.ratingGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.rateBtn{border-radius:14px;border:1px solid;padding:12px 6px;font-weight:850;color:white;min-height:66px}.rateBtn small{display:block;font-size:10px;font-weight:600;opacity:.78;margin-top:4px}.forgot{background:#3a1520;border-color:#7f2e43}.slow{background:#3a2c10;border-color:#735917}.instant{background:#11372f;border-color:#276b5b}.sessionStats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px}.sessionStats .metric b{font-size:16px}.choices{display:grid;gap:10px;margin-top:18px}.choice{background:#091525;color:white;border:1px solid #2b405b;border-radius:14px;padding:14px;text-align:left;font-weight:650;line-height:1.45}.choice.correct{background:rgba(52,211,153,.14);border-color:var(--green)}.choice.wrong{background:rgba(251,113,133,.13);border-color:var(--red)}.feedback{text-align:center;min-height:28px;margin-top:10px;font-weight:800}.ok{color:#86efac}.ng{color:#fda4af}.resultScore{text-align:center;font-size:52px;font-weight:900;margin:4px}.resultSub{text-align:center;color:var(--muted);margin-bottom:12px}.wrongList{display:grid;gap:7px;max-height:330px;overflow:auto}.wrongItem{background:#091525;border:1px solid #263b57;border-radius:12px;padding:10px 11px}.wrongItem b{display:block;margin-bottom:3px}.backupGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#eef2f7;color:#07101d;padding:10px 14px;border-radius:99px;font-size:12px;font-weight:800;transition:.2s;z-index:99;max-width:88%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.smallLink{background:none;border:0;color:#9ec5ff;padding:6px 0;font-size:12px}.divider{height:1px;background:#20334c;margin:14px 0}.reviewEmpty{text-align:center;padding:30px 12px;color:var(--muted);line-height:1.7}.reviewEmpty b{color:white;font-size:20px;display:block;margin-bottom:8px}@media(max-width:520px){.shell{padding-top:max(62px,calc(16px + env(safe-area-inset-top)))}.word{font-size:38px}.stageGrid{grid-template-columns:1fr 1fr}.rateBtn{font-size:13px;padding:11px 3px}.formGrid{grid-template-columns:1fr 1fr}.actionGrid{grid-template-columns:1fr}.sessionStats{grid-template-columns:repeat(4,1fr)}}
+
+:root{color-scheme:light;--bg:#f3f6f8;--panel:#fff;--panel2:#f5f8fa;--line:#dce4ea;--text:#172c3e;--muted:#536779;--blue:#0f766e;--green:#15803d;--amber:#9a6505;--red:#b4233b;--purple:#7354a3}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;font-size:16px;line-height:1.6;min-height:100vh;min-height:100dvh}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{cursor:default}button,input,select,summary{outline-offset:4px}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #0f766e}button{transition:background .15s,border-color .15s}button:hover{filter:brightness(.97)}.hidden{display:none!important}.shell{width:min(1060px,100%);margin:0 auto;padding:calc(28px + env(safe-area-inset-top)) 24px calc(40px + env(safe-area-inset-bottom))}.brand{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 24px}.brand h1{margin:0;font-size:27px;font-weight:850;letter-spacing:-.03em}.brand h1::before{content:"";display:inline-block;width:10px;height:24px;background:var(--blue);border-radius:3px;margin-right:12px;vertical-align:-2px}.brand small{color:var(--muted);font-size:13px}.brand>small{white-space:nowrap}
+#home{display:grid;grid-template-columns:1.08fr 1fr;gap:20px;align-items:start}.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 3px 12px #19324605;min-width:0}.todayCard,.dataCard{grid-column:1/-1}.scopeCard{grid-column:1;grid-row:2/4}.studyCard{grid-column:2;grid-row:2;border-top:4px solid var(--blue)}.practiceCard{grid-column:2;grid-row:3}.sectionTitle{font-size:19px;font-weight:800;color:var(--text);letter-spacing:.01em;margin:0 0 18px}.todayCard .sectionTitle{font-size:15px;margin-bottom:12px;color:var(--muted)}.todayGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.metric{padding:12px 8px;background:var(--panel2);border-radius:12px;text-align:center}.metric b{display:block;font-size:30px;font-weight:800;line-height:1.3;font-variant-numeric:tabular-nums}.metric span{display:block;font-size:13px;color:var(--muted);margin-top:5px}.todayCard .metric{background:none;padding:0 8px}.todayCard .metric+.metric{border-left:1px solid var(--line);border-radius:0}.todayCard .metric b{font-size:34px}
+.stagePicker{border:0;padding:0;margin:0;min-width:0}.stagePicker legend{font-size:14px;color:var(--muted);margin-bottom:10px}.stageChecks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stageCheck{display:flex;align-items:center;gap:10px;justify-content:center;border:1px solid #c8d5de;border-radius:12px;padding:13px 8px;background:#fff;font-size:16px;font-weight:700;cursor:pointer;min-height:52px}.stageCheck:has(input:checked){background:#e8f5f2;border:2px solid var(--blue);padding:12px 7px;color:#095b55}.stageCheck:focus-within{outline:3px solid #79c7bc;outline-offset:3px}.stageCheck input{accent-color:var(--blue);width:19px;height:19px;margin:0}.scopePresets{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}.scopePresets button{font-size:13px;min-height:40px;padding:7px 13px}.combined{width:100%;text-align:left;display:flex;gap:16px;justify-content:space-between;align-items:center;border:1px solid #add4cd;background:#eff9f6;border-radius:14px;padding:18px;color:var(--text)}.combined strong{font-size:36px;color:#0a6259;flex-shrink:0;line-height:1.2}.combined b{font-size:17px}.combined>div{min-width:0}.stageMeta{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.7;overflow-wrap:anywhere}.combined .stageMeta{font-size:13px}.stageGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stage{border:1px solid var(--line);background:#fff;color:var(--text);padding:14px 12px;border-radius:12px;text-align:left;min-width:0}.stageHead{display:flex;align-items:baseline;justify-content:space-between;gap:6px}.stageHead b{font-size:14px}.stagePct{font-size:24px;font-weight:800}.bar{height:6px;border-radius:99px;background:#e4ebef;overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}.stageDetail{background:#f4f8fa;border:1px solid #cbdbe3;border-radius:14px;padding:18px;margin-top:18px}.stageDetailHead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}.stageDetailHead b{font-size:17px}.stageDetailHead strong{font-size:28px}.detailGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.detailMetric{padding:10px;background:#fff;border:1px solid var(--line);border-radius:10px;text-align:center}.detailMetric b{display:block;font-size:23px}.detailMetric span{font-size:13px;color:var(--muted)}.stageDetailActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.formGrid{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;align-items:start}.field{min-width:0}.field label{display:block;font-size:14px;color:var(--muted);margin:0 0 7px}.field input,.field select{width:100%;min-height:48px;padding:10px 12px;border:1px solid #bcccd6;background:#fff;color:var(--text);border-radius:10px;font-size:16px}.field input[type=hidden]{display:none}.scopeSummary{font-size:17px;line-height:1.5;font-weight:750;padding:10px 0}.rangeGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.primary,.secondary,.soft,.danger{border:1px solid transparent;border-radius:12px;padding:13px 16px;font-size:16px;font-weight:750;min-height:50px;line-height:1.5}.primary{background:var(--blue);color:white}.secondary{background:#e9f3f2;color:#0b5b55;border-color:#c4ded9}.soft{background:#fff;border-color:#c6d4dd;color:#254255}.danger{background:#fff0f2;color:#a22237;border-color:#efb7c2}.wide{width:100%}.actionGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.actionGrid button{font-size:14px}.hint{font-size:13px;color:var(--muted);line-height:1.8;margin-top:12px}.practiceCard>.scopeSummary{padding:0 0 3px}.practiceCard>.hint{margin-top:5px}.studyCard>.hint{margin-top:16px}.smallLink{color:#365c70;background:transparent;border:0;padding:10px 4px;font-size:14px;min-height:44px;text-decoration:underline;text-underline-offset:3px}.backupGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.dataCard{padding:18px 24px}.dataCard #resetBtn{color:#a1263a;margin-top:12px}.fold{border-top:1px solid var(--line);margin-top:20px;padding-top:14px}.fold summary,.dataCard summary{font-weight:700;font-size:14px;cursor:pointer;padding:6px 0;color:#355467;min-height:36px}.fold[open] summary{margin-bottom:12px}.helpFold summary{font-size:13px;font-weight:600}.dataCard summary{font-size:16px}
+#recall,#quiz,#quizSetup,#recallResult,#quizResult{max-width:720px;margin:0 auto;padding:30px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--muted);font-size:14px;margin-bottom:16px}.topbar span:last-child{text-align:right}.progress{height:7px;border-radius:99px;background:#e2ebee;overflow:hidden}.progress i{display:block;background:var(--blue);height:100%;width:0;transition:width .15s}.wordArea{text-align:center;padding:46px 6px 32px}.wordNo{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}.word{font-size:clamp(36px,7vw,56px);font-weight:800;letter-spacing:-.02em;line-height:1.25;margin:16px 0;overflow-wrap:anywhere}.stageTag{font-size:13px;padding:5px 12px;border-radius:7px;background:#eaf2f5;color:#375567}.timer{font-size:14px;color:var(--muted);margin-top:18px}.answerBox{font-size:23px;font-weight:750;text-align:center;line-height:1.7;padding:24px 18px;border:1px solid #cfe1dd;background:#f1f8f5;border-radius:14px;margin:0 0 18px}.ratingGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.rateBtn{padding:15px 5px;min-height:84px;border:1px solid;border-radius:12px;font-size:16px;font-weight:750}.rateBtn small{display:block;font-size:13px;margin-top:5px;font-weight:500}.forgot{background:#fff0f3;border-color:#efbfca;color:#a51e39}.slow{background:#fff7e6;border-color:#e7d29c;color:#815710}.instant{background:#e9f7ef;border-color:#abd5bc;color:#176139}.sessionStats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:24px}.sessionStats .metric b{font-size:21px}.sessionStats .metric span{font-size:12px}.choices{display:grid;gap:12px;margin-top:8px}.choice{padding:18px;font-size:18px;line-height:1.6;font-weight:600;text-align:left;min-height:62px;border:1px solid #c4d3dd;border-radius:12px;background:#fff;color:var(--text)}.choice.correct{background:#e8f7ed;border:2px solid #267342;color:#14542a}.choice.wrong{background:#fff0f3;border:2px solid #b83250;color:#98203c}.feedback{text-align:center;min-height:32px;font-weight:750;font-size:17px;margin-top:16px}.ok{color:#176139}.ng{color:#a51e39}.resultScore{text-align:center;font-size:64px;font-weight:850;color:var(--blue);line-height:1.2;margin:24px 0 8px}.resultSub{text-align:center;font-size:15px;color:var(--muted);margin-bottom:24px}.wrongList{display:grid;gap:10px;max-height:400px;overflow:auto}.wrongItem{background:#f6f8fa;border:1px solid var(--line);border-radius:10px;padding:14px;font-size:16px}.wrongItem b{display:block;margin-bottom:4px}.divider{height:1px;background:var(--line);margin:20px 0}.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#193b46;color:white;border-radius:12px;padding:13px 18px;font-size:14px;font-weight:650;max-width:90%;width:max-content;text-align:center;z-index:99;transition:opacity .15s,transform .15s}.toast.show{opacity:1;transform:translate(-50%,0)}#quizSetup>.formGrid{margin-top:20px}.reviewEmpty{text-align:center;padding:32px 16px;color:var(--muted)}.reviewEmpty b{display:block;color:var(--text);font-size:22px}
+@media(max-width:760px){.shell{max-width:600px;padding:calc(20px + env(safe-area-inset-top)) 16px calc(32px + env(safe-area-inset-bottom))}.brand{margin-bottom:20px}.brand h1{font-size:24px}.brand small{font-size:12px}#home{display:flex;flex-direction:column;gap:16px}#home>.card{width:100%}.card{padding:20px;border-radius:17px}.todayCard{padding:16px}.todayCard .metric b{font-size:28px}.scopeCard .stageChecks{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.scopeCard .stageCheck{font-size:14px;gap:5px;padding:12px 3px}.scopeCard .stageCheck:has(input:checked){padding:11px 2px}.scopeCard .stageCheck input{width:17px;height:17px}.sectionTitle{font-size:18px;margin-bottom:15px}.combined{padding:16px}.combined strong{font-size:32px}.combined b{font-size:16px}#recall,#quiz,#quizSetup,#recallResult,#quizResult{padding:22px 18px}.wordArea{padding:36px 4px 28px}.topbar{font-size:13px;gap:12px}.answerBox{font-size:21px}.rateBtn{font-size:14px;min-height:80px}.ratingGrid{gap:7px}.rateBtn small{font-size:12px}.dataCard{padding:16px 20px}}
+@media(max-width:370px){.shell{padding-left:12px;padding-right:12px}.card{padding:17px}.scopeCard .stageChecks{grid-template-columns:1fr 1fr}.metric span{font-size:12px}.brand{gap:8px}.brand small{font-size:11px}.combined{gap:8px}.combined strong{font-size:28px}.stageDetailActions,.actionGrid{grid-template-columns:1fr}.ratingGrid{gap:5px}.rateBtn{font-size:13px}.sessionStats .metric{padding:10px 3px}.sessionStats .metric b{font-size:18px}.scopeSummary{font-size:15px}.field label{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -24,8 +25,8 @@
   <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・選択肢なしRecall中心</small></div><small id="dateLabel"></small></div>
 
   <section id="home">
-    <div class="card">
-      <div class="sectionTitle">今日</div>
+    <div class="card todayCard">
+      <div class="sectionTitle">今日の学習状況</div>
       <div class="todayGrid">
         <div class="metric"><b id="dueCount">0</b><span>復習期限</span></div>
         <div class="metric"><b id="newCount">0</b><span>新規候補</span></div>
@@ -33,10 +34,11 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="sectionTitle">ステージ別 習得度</div>
-      <div class="stageGrid" id="stageGrid"></div>
-      <div class="combined" id="stage12Card"><div><b>Stage 1 + 2</b><div class="stageMeta">No.1〜1200</div></div><strong id="stage12Pct">0%</strong></div>
+    <div class="card scopeCard">
+      <div class="sectionTitle">学習する範囲</div>
+      <fieldset class="stagePicker"><legend>学習するステージ（複数選択）</legend><div class="stageChecks"><label class="stageCheck"><input type="checkbox" data-stage="s1" id="homeStage1">Stage 1</label><label class="stageCheck"><input type="checkbox" data-stage="s2" id="homeStage2">Stage 2</label><label class="stageCheck"><input type="checkbox" data-stage="s3" id="homeStage3">Stage 3</label><label class="stageCheck"><input type="checkbox" data-stage="s4" id="homeStage4">Stage 4</label></div><div class="scopePresets"><button class="soft" data-scope="s12">1＋2</button><button class="soft" data-scope="s123">1＋2＋3</button><button class="soft" data-scope="s34">3＋4</button><button class="soft" data-scope="all">全ステージ</button></div></fieldset>
+      <button type="button" class="combined" id="combinedCard" aria-label="選択中ステージの習得状況を詳しく見る"><div><b id="combinedTitle">Stage 1 + 2</b><div class="stageMeta" id="combinedRange"></div><div class="stageMeta" id="combinedCounts"></div></div><strong id="combinedPct">0%</strong></button>
+      <div class="hint">選んだステージの合計です。下のすべての学習に反映されます。タップで詳しい状況を表示。</div>
       <div id="stageDetail" class="stageDetail hidden">
         <div class="stageDetailHead"><div><b id="detailTitle">Stage 1</b><div class="stageMeta" id="detailRange">No.1〜600</div></div><strong id="detailPct">0%</strong></div>
         <div class="detailGrid">
@@ -48,17 +50,17 @@
           <div class="detailMetric"><b id="detailStudied">0</b><span>学習経験あり</span></div>
         </div>
         <div class="stageDetailActions">
-          <button id="detailUseScope" class="secondary">今日の対象にする</button>
+          <button id="detailUseScope" class="secondary">この組み合わせで学ぶ</button>
           <button id="detailClose" class="soft">閉じる</button>
         </div>
       </div>
-      <div class="hint">習得済み＝選択肢なしで「即答」を間隔を空けて重ね、復習間隔が14日以上になった単語。4択の正解は習得度には加算しません。</div>
+      <details class="fold"><summary>ステージごとの習得度を見る</summary><div class="stageGrid" id="stageGrid"></div></details><details class="fold helpFold"><summary>習得度の見方</summary><div class="hint">習得済み＝選択肢なしで「即答」を間隔を空けて重ね、復習間隔が14日以上になった単語。4択の正解は習得度には加算しません。</div></details>
     </div>
 
-    <div class="card">
+    <div class="card studyCard">
       <div class="sectionTitle">今日のRecall学習</div>
       <div class="formGrid">
-        <div class="field"><label>対象</label><select id="scope"><option value="all">全ステージ</option><option value="s12" selected>Stage 1 + 2</option><option value="s1">Stage 1（1〜600）</option><option value="s2">Stage 2（601〜1200）</option><option value="s3">Stage 3（1201〜1700）</option><option value="s4">Stage 4（1701〜2027）</option></select></div>
+        <div class="field"><label>選択中の対象</label><input id="scope" type="hidden"><div class="scopeSummary" id="recallScopeLabel"></div></div>
         <div class="field"><label>1日の新規</label><select id="dailyNew"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></div>
       </div>
       <button id="startReview" class="primary wide" style="margin-top:11px">今日の復習を始める</button>
@@ -66,27 +68,28 @@
       <div class="hint">「答えを見る」までは日本語を表示しません。回答時間も記録しますが、判定は自分で「忘れた / 遅かった / 即答」を選びます。</div>
     </div>
 
-    <div class="card">
-      <div class="sectionTitle">自由練習</div>
+    <div class="card practiceCard">
+      <div class="sectionTitle">自由練習</div><div class="scopeSummary" id="freeScopeLabel"></div><div class="hint">選んだステージの中から、番号の範囲を絞れます。未選択のステージは出題しません。</div>
       <div class="rangeGrid">
         <div class="field"><label>開始</label><input id="rangeStart" type="number" min="1" max="2027" value="1"></div>
         <div class="field"><label>終了</label><input id="rangeEnd" type="number" min="1" max="2027" value="2027"></div>
         <div class="field"><label>問題数</label><select id="practiceCount"><option>10</option><option selected>30</option><option>50</option><option>100</option></select></div>
       </div>
+      <div class="field" style="margin-top:9px"><label for="practiceOrder">出題順</label><select id="practiceOrder"><option value="random">ランダム</option><option value="sequential">番号順</option></select></div>
       <button id="freeRecall" class="soft wide" style="margin-top:9px">この範囲をRecall練習</button>
-      <div class="hint">自由練習でも3段階評価は履歴に反映します。新規語を一気に進めたいときにも使えます。</div>
+      <div class="hint">自由練習でも3段階評価は履歴に反映します。「忘れた」語は、この回の最後に1回だけ再出題します。</div>
     </div>
 
-    <div class="card">
-      <div class="sectionTitle">データ</div>
+    <div class="card dataCard"><details>
+      <summary>進捗の保存・読み込み</summary>
       <div class="backupGrid"><button id="exportBtn" class="soft">進捗を書き出す</button><button id="importBtn" class="soft">進捗を読み込む</button></div>
       <input id="importInput" type="file" accept="application/json" class="hidden">
       <button id="resetBtn" class="smallLink">学習履歴をリセット</button>
-    </div>
+    </details></div>
   </section>
 
   <section id="recall" class="card hidden">
-    <div class="topbar"><span id="recallIndex">1 / 20</span><span>今日のRecall</span></div>
+    <div class="topbar"><span id="recallIndex">1 / 20</span><span id="recallModeLabel">今日のRecall</span></div>
     <div class="progress"><i id="recallBar"></i></div>
     <div class="wordArea">
       <div class="wordNo" id="recallNo">No.1</div>
@@ -117,14 +120,20 @@
   </section>
 
   <section id="quizSetup" class="card hidden">
-    <div class="sectionTitle">4択チェック</div>
-    <div class="formGrid"><div class="field"><label>対象</label><select id="quizScope"><option value="all">全ステージ</option><option value="s12">Stage 1 + 2</option><option value="s1">Stage 1</option><option value="s2">Stage 2</option><option value="s3">Stage 3</option><option value="s4">Stage 4</option></select></div><div class="field"><label>問題数</label><select id="quizCount"><option>10</option><option selected>30</option><option>50</option><option>100</option></select></div></div>
+    <div class="sectionTitle">4択チェック</div><fieldset class="stagePicker"><legend>学習するステージ（複数選択）</legend><div class="stageChecks"><label class="stageCheck"><input type="checkbox" data-stage="s1" id="quizStage1">Stage 1</label><label class="stageCheck"><input type="checkbox" data-stage="s2" id="quizStage2">Stage 2</label><label class="stageCheck"><input type="checkbox" data-stage="s3" id="quizStage3">Stage 3</label><label class="stageCheck"><input type="checkbox" data-stage="s4" id="quizStage4">Stage 4</label></div></fieldset><div class="hint">ステージ選択はホームと共通です。未選択のステージは出題しません。</div>
+    <div class="formGrid"><div class="field"><label>選択中の対象</label><input id="quizScope" type="hidden"><div class="scopeSummary" id="quizScopeLabel"></div></div><div class="field"><label>問題数</label><select id="quizCount"><option>10</option><option selected>30</option><option>50</option><option>100</option></select></div></div>
+    <div class="formGrid" style="margin-top:11px">
+      <div class="field"><label for="quizRangeStart">開始番号</label><input id="quizRangeStart" type="number" min="1" max="2027" value="1"></div>
+      <div class="field"><label for="quizRangeEnd">終了番号</label><input id="quizRangeEnd" type="number" min="1" max="2027" value="2027"></div>
+      <div class="field"><label for="quizOrder">出題順</label><select id="quizOrder"><option value="random">ランダム</option><option value="sequential">番号順</option></select></div>
+    </div>
+    <div class="hint">番号順では開始番号から出題します。選択肢の並びは毎回ランダムです。</div>
     <button id="startQuiz" class="primary wide" style="margin-top:11px">4択を開始</button><button id="quizCancel" class="smallLink wide">戻る</button>
     <div class="hint">4択は高速チェック用です。正解してもSRSの習得度は上がりません。間違えた語は「苦手語」の優先度に反映されます。</div>
   </section>
 
   <section id="quiz" class="card hidden">
-    <div class="topbar"><span id="quizIndex">1 / 30</span><span>4択チェック</span></div><div class="progress"><i id="quizBar"></i></div>
+    <div class="topbar"><span id="quizIndex">1 / 30</span><span id="quizModeLabel">4択チェック</span></div><div class="progress"><i id="quizBar"></i></div>
     <div class="wordArea"><div class="wordNo" id="quizNo"></div><div class="word" id="quizWord"></div></div>
     <div id="choices" class="choices"></div><div id="feedback" class="feedback"></div>
     <button id="quizNext" class="primary wide hidden">次へ</button>
@@ -158,60 +167,117 @@ function migrateLegacy(){if(state.meta.legacyChecked)return;state.meta.legacyChe
 function card(id){return state.cards[id]||{reps:0,interval:0,due:0,lapses:0,instantStreak:0,lastRating:'',lastTime:0,quizWrong:0}}
 function setCard(id,c){state.cards[id]=c;safeSave()}
 function stageOf(id){return id<=600?STAGES[0]:id<=1200?STAGES[1]:id<=1700?STAGES[2]:STAGES[3]}
-function scopeRange(v){if(v==='s1')return[1,600];if(v==='s2')return[601,1200];if(v==='s3')return[1201,1700];if(v==='s4')return[1701,2027];if(v==='s12')return[1,1200];return[1,2027]}
-function wordsInScope(v){const [s,e]=scopeRange(v);return WORDS.filter(w=>w.id>=s&&w.id<=e)}
+function scopeStages(value){
+  if(value==='all')return STAGES;
+  if(typeof value!=='string'||!/^s[1-4]+$/.test(value))return [];
+  return STAGES.filter(st=>value.slice(1).includes(st.key.slice(1)))
+}
+function normalizeScope(value){const stages=scopeStages(value);return stages.length===4?'all':stages.length?'s'+stages.map(st=>st.key.slice(1)).join(''):'s12'}
+function scopeName(value){return 'Stage '+scopeStages(value).map(st=>st.key.slice(1)).join(' + ')}
+function scopeRange(value){const stages=scopeStages(value);return stages.length?[stages[0].s,stages[stages.length-1].e]:[1,2027]}
+function scopeDescription(value){return scopeStages(value).map(st=>`No.${st.s}〜${st.e}`).join(' / ')}
+function wordsInScope(value){const stages=scopeStages(value);return WORDS.filter(w=>stages.some(st=>w.id>=st.s&&w.id<=st.e))}
+function scopeStats(value){
+  const ws=wordsInScope(value);let m=0,l=0,n=0,weak=0,due=0;
+  for(const w of ws){const st=status(w.id),c=card(w.id);if(st==='mastered')m++;else if(st==='learning')l++;else n++;
+    if((c.lapses||0)>0||(c.quizWrong||0)>0||c.lastRating==='forgot'||c.lastRating==='slow')weak++;
+    if(dueNow(w.id))due++;
+  }
+  return {m,l,n,weak,due,total:ws.length,pct:ws.length?Math.round(m/ws.length*100):0}
+}
+function syncScopeUI(resetRanges=false){
+  const scope=normalizeScope(state.settings.scope);state.settings.scope=scope;
+  $('scope').value=scope;$('quizScope').value=scope;
+  const selected=scopeStages(scope).map(st=>st.key);
+  document.querySelectorAll('[data-stage]').forEach(input=>input.checked=selected.includes(input.dataset.stage));
+  for(const id of ['recallScopeLabel','freeScopeLabel','quizScopeLabel'])$(id).textContent=scopeName(scope);
+  if(resetRanges){const [s,e]=scopeRange(scope);$('rangeStart').value=s;$('rangeEnd').value=e;syncQuizRange()}
+}
+function setScope(value){
+  state.settings.scope=normalizeScope(value);syncScopeUI(true);safeSave();
+  $('stageDetail').classList.add('hidden');detailScope=null;updateDashboard()
+}
+document.querySelectorAll('[data-stage]').forEach(input=>input.onchange=()=>{
+  const keys=new Set(scopeStages(state.settings.scope).map(st=>st.key));
+  if(input.checked)keys.add(input.dataset.stage);else keys.delete(input.dataset.stage);
+  if(!keys.size){input.checked=true;toast('ステージを1つ以上選んでください');return}
+  setScope('s'+STAGES.filter(st=>keys.has(st.key)).map(st=>st.key.slice(1)).join(''))
+});
+document.querySelectorAll('[data-scope]').forEach(button=>button.onclick=()=>setScope(button.dataset.scope));
 function isMastered(c){return (c.interval||0)>=14 && (c.instantStreak||0)>=2 && c.lastRating==='instant'}
 function status(id){const c=card(id);if(!c.reps)return'new';return isMastered(c)?'mastered':'learning'}
 function dueNow(id){const c=card(id);return c.reps>0 && (c.due||0)<=Date.now()}
 function masteryStats(s,e){let m=0,l=0,n=0;for(let i=s;i<=e;i++){const st=status(i);if(st==='mastered')m++;else if(st==='learning')l++;else n++}const total=e-s+1;return{m,l,n,total,pct:Math.round(m/total*100)}}
 function weakCount(s,e){let n=0;for(let i=s;i<=e;i++){const c=card(i);if((c.lapses||0)>0||(c.quizWrong||0)>0||c.lastRating==='forgot'||c.lastRating==='slow')n++}return n}
 let detailScope=null;
-function showStageDetail(key){
-  let s,e,name;
-  if(key==='s12'){s=1;e=1200;name='Stage 1 + 2'}else{const st=STAGES.find(x=>x.key===key);if(!st)return;s=st.s;e=st.e;name=st.name}
-  const x=masteryStats(s,e);
-  detailScope=key;
-  $('detailTitle').textContent=name;
-  $('detailRange').textContent=`No.${s}〜${e}`;
-  $('detailPct').textContent=x.pct+'%';
-  $('detailMastered').textContent=x.m;
-  $('detailLearning').textContent=x.l;
-  $('detailNew').textContent=x.n;
-  $('detailWeak').textContent=weakCount(s,e);
-  $('detailDue').textContent=WORDS.filter(w=>w.id>=s&&w.id<=e&&dueNow(w.id)).length;
-  $('detailStudied').textContent=x.m+x.l;
-  $('stageDetail').classList.remove('hidden');
-  $('stageDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
+function showStageDetail(key,scroll=true){
+  const x=scopeStats(key);detailScope=key;
+  $('detailTitle').textContent=scopeName(key);$('detailRange').textContent=scopeDescription(key)+' ・ '+x.total+'語';
+  $('detailPct').textContent=x.pct+'%';$('detailMastered').textContent=x.m;$('detailLearning').textContent=x.l;
+  $('detailNew').textContent=x.n;$('detailWeak').textContent=x.weak;$('detailDue').textContent=x.due;$('detailStudied').textContent=x.m+x.l;
+  $('stageDetail').classList.remove('hidden');if(scroll)$('stageDetail').scrollIntoView({behavior:'smooth',block:'nearest'})
 }
-
-function updateDashboard(){rollover();const scope=$('scope').value;const ws=wordsInScope(scope);const due=ws.filter(w=>dueNow(w.id)).length;const daily=+(state.settings.dailyNew||20);const used=state.meta.newToday.length;const newAvail=Math.max(0,Math.min(daily-used,ws.filter(w=>status(w.id)==='new').length));$('dueCount').textContent=due;$('newCount').textContent=newAvail;const all=masteryStats(1,2027);$('masteredAll').textContent=all.pct+'%';const grid=$('stageGrid');grid.innerHTML='';for(const st of STAGES){const x=masteryStats(st.s,st.e);const d=document.createElement('div');d.className='stage';d.innerHTML=`<div class="stageHead"><b>${st.name}</b><span class="stagePct">${x.pct}%</span></div><div class="stageMeta">習得 ${x.m} / ${x.total} ・ 学習中 ${x.l} ・ 未学習 ${x.n}</div><div class="bar"><i style="width:${x.pct}%"></i></div>`;d.onclick=()=>showStageDetail(st.key);grid.appendChild(d)}const s12=masteryStats(1,1200);$('stage12Pct').textContent=s12.pct+'%';$('dailyNew').value=String(state.settings.dailyNew||20);$('dateLabel').textContent=new Date().toLocaleDateString('ja-JP',{month:'numeric',day:'numeric',weekday:'short'});if(detailScope&&!$('stageDetail').classList.contains('hidden'))showStageDetail(detailScope)}
+function updateDashboard(){
+  rollover();syncScopeUI();const scope=state.settings.scope,ws=wordsInScope(scope);
+  const daily=+(state.settings.dailyNew||20),used=state.meta.newToday.length;
+  $('dueCount').textContent=ws.filter(w=>dueNow(w.id)).length;
+  $('newCount').textContent=Math.max(0,Math.min(daily-used,ws.filter(w=>status(w.id)==='new').length));
+  $('masteredAll').textContent=masteryStats(1,2027).pct+'%';
+  const grid=$('stageGrid');grid.innerHTML='';
+  for(const st of STAGES){const x=scopeStats(st.key),d=document.createElement('button');d.type='button';d.className='stage';
+    d.innerHTML=`<div class="stageHead"><b>${st.name}</b><span class="stagePct">${x.pct}%</span></div><div class="stageMeta">習得 ${x.m} / ${x.total} ・ 学習中 ${x.l} ・ 未学習 ${x.n}</div><div class="bar"><i style="width:${x.pct}%"></i></div>`;
+    d.onclick=()=>showStageDetail(st.key);grid.appendChild(d)
+  }
+  const combined=scopeStats(scope);$('combinedTitle').textContent=scopeName(scope);$('combinedPct').textContent=combined.pct+'%';
+  $('combinedRange').textContent=scopeDescription(scope);
+  $('combinedCounts').textContent=`習得 ${combined.m} / ${combined.total}語 ・ 学習中 ${combined.l} ・ 未学習 ${combined.n}`;
+  $('dailyNew').value=String(state.settings.dailyNew||20);$('dateLabel').textContent=new Date().toLocaleDateString('ja-JP',{month:'numeric',day:'numeric',weekday:'short'});
+  if(detailScope&&!$('stageDetail').classList.contains('hidden'))showStageDetail(detailScope,false)
+}
 function preview(rate,c){let int=c.interval||0;if(rate==='forgot')return{interval:0,due:Date.now()+10*60000,label:'10分後'};if(rate==='slow'){int=int<1?1:Math.max(1,Math.round(int*1.5));return{interval:int,due:Date.now()+int*DAY,label:int+'日後'}}int=int<1?3:int<3?7:Math.min(180,Math.max(int+1,Math.round(int*2.2)));return{interval:int,due:Date.now()+int*DAY,label:int+'日後'} }
 function applyRating(id,rate,timeMs){const c=card(id),p=preview(rate,c);c.reps=(c.reps||0)+1;c.interval=p.interval;c.due=p.due;c.lastRating=rate;c.lastTime=Math.round(timeMs/100)/10;if(rate==='forgot'){c.lapses=(c.lapses||0)+1;c.instantStreak=0}else if(rate==='slow'){c.instantStreak=0}else{c.instantStreak=(c.instantStreak||0)+1}setCard(id,c);return c}
 function pickToday(scope){rollover();const ws=wordsInScope(scope);let due=ws.filter(w=>dueNow(w.id)).sort((a,b)=>(card(a.id).due||0)-(card(b.id).due||0));const daily=+(state.settings.dailyNew||20),used=state.meta.newToday.length,remaining=Math.max(0,daily-used);let fresh=ws.filter(w=>status(w.id)==='new'&&!state.meta.newToday.includes(w.id)).sort((a,b)=>a.id-b.id).slice(0,remaining);for(const w of fresh)state.meta.newToday.push(w.id);safeSave();return due.concat(fresh)}
 function weakScore(w){const c=card(w.id);return (c.lapses||0)*20+(c.quizWrong||0)*8+(c.lastRating==='forgot'?20:c.lastRating==='slow'?8:0)+(c.reps?0:4)-Math.min(c.interval||0,20)}
 function pickWeak(scope,n=30){return wordsInScope(scope).filter(w=>card(w.id).reps||card(w.id).quizWrong).sort((a,b)=>weakScore(b)-weakScore(a)||a.id-b.id).slice(0,n)}
 function showSection(id){for(const x of ['home','recall','recallResult','quizSetup','quiz','quizResult'])$(x).classList.add('hidden');$(id).classList.remove('hidden');window.scrollTo(0,0)}
-function startRecall(queue,mode){if(!queue.length){toast(mode==='today'?'今日この範囲で出題するカードはありません':'対象になる単語がありません');return}recallQueue=queue.map(w=>({id:w.id,requeued:false}));recallPos=0;recallStats={forgot:0,slow:0,instant:0,times:[]};recallMode=mode;showSection('recall');renderRecall()}
+function startRecall(queue,mode){if(!queue.length){toast(mode==='today'?'今日この範囲で出題するカードはありません':'対象になる単語がありません');return}recallQueue=queue.map(w=>({id:w.id,requeued:false}));recallPos=0;recallStats={forgot:0,slow:0,instant:0,times:[]};recallMode=mode;$('recallModeLabel').textContent=(mode==='today'?'今日のRecall':mode==='weak'?'苦手語Recall':'自由練習')+'・'+scopeName(state.settings.scope);updateRecallStats();showSection('recall');renderRecall()}
 function renderRecall(){if(recallPos>=recallQueue.length){finishRecall();return}recallShown=false;const item=recallQueue[recallPos],w=WORDS[item.id-1];$('recallIndex').textContent=`${recallPos+1} / ${recallQueue.length}`;$('recallBar').style.width=(recallPos/recallQueue.length*100)+'%';$('recallNo').textContent='No.'+w.id;$('recallWord').textContent=w.en;$('recallStage').textContent=stageOf(w.id).name;$('timerLabel').textContent='考えてから「答えを見る」';$('showAnswer').classList.remove('hidden');$('answerPanel').classList.add('hidden');recallStart=performance.now()}
 $('showAnswer').onclick=()=>{if(recallShown)return;recallShown=true;recallElapsed=performance.now()-recallStart;const item=recallQueue[recallPos],w=WORDS[item.id-1],c=card(w.id);$('recallAnswer').textContent=w.ja;$('timerLabel').textContent=`答えを見るまで ${(recallElapsed/1000).toFixed(1)} 秒`;$('forgotNext').textContent=preview('forgot',c).label;$('slowNext').textContent=preview('slow',c).label;$('instantNext').textContent=preview('instant',c).label;$('showAnswer').classList.add('hidden');$('answerPanel').classList.remove('hidden')};
 document.querySelectorAll('.rateBtn').forEach(b=>b.onclick=()=>{if(!recallShown)return;const rate=b.dataset.rate,item=recallQueue[recallPos],w=WORDS[item.id-1];applyRating(w.id,rate,recallElapsed);recallStats[rate]++;recallStats.times.push(recallElapsed);if(rate==='forgot'&&!item.requeued){recallQueue.push({id:w.id,requeued:true})}recallPos++;updateRecallStats();renderRecall()});
 function updateRecallStats(){$('sForgot').textContent=recallStats.forgot;$('sSlow').textContent=recallStats.slow;$('sInstant').textContent=recallStats.instant;const a=recallStats.times;$('sAvg').textContent=a.length?(a.reduce((x,y)=>x+y,0)/a.length/1000).toFixed(1)+'s':'—'}
 function finishRecall(){const total=recallStats.forgot+recallStats.slow+recallStats.instant,good=recallStats.instant,pct=total?Math.round(good/total*100):0;$('recallResultPct').textContent=pct+'%';$('recallResultSub').textContent=`${total}回評価・即答率`;$('rForgot').textContent=recallStats.forgot;$('rSlow').textContent=recallStats.slow;$('rInstant').textContent=recallStats.instant;showSection('recallResult');updateDashboard()}
 $('stopRecall').onclick=()=>finishRecall();$('homeFromRecall').onclick=()=>{showSection('home');updateDashboard()};
-$('dailyNew').onchange=e=>{state.settings.dailyNew=+e.target.value;safeSave();updateDashboard()};$('scope').onchange=e=>{state.settings.scope=e.target.value;safeSave();updateDashboard()};$('stage12Card').onclick=()=>showStageDetail('s12');$('detailUseScope').onclick=()=>{if(!detailScope)return;$('scope').value=detailScope;state.settings.scope=detailScope;safeSave();$('stageDetail').classList.add('hidden');updateDashboard();toast('今日の対象を変更しました')};$('detailClose').onclick=()=>{$('stageDetail').classList.add('hidden')};
+$('dailyNew').onchange=e=>{state.settings.dailyNew=+e.target.value;safeSave();updateDashboard()};
+$('combinedCard').onclick=()=>showStageDetail(state.settings.scope);
+$('detailUseScope').onclick=()=>{if(!detailScope)return;setScope(detailScope);toast('学習するステージを変更しました')};
+$('detailClose').onclick=()=>{$('stageDetail').classList.add('hidden');detailScope=null};
 $('startReview').onclick=()=>startRecall(pickToday($('scope').value),'today');$('weakRecall').onclick=()=>startRecall(pickWeak($('scope').value,30),'weak');
-$('freeRecall').onclick=()=>{let s=clamp(+$('rangeStart').value||1,1,2027),e=clamp(+$('rangeEnd').value||2027,1,2027);if(s>e)[s,e]=[e,s];$('rangeStart').value=s;$('rangeEnd').value=e;const n=+$('practiceCount').value||30;startRecall(shuffle(WORDS.filter(w=>w.id>=s&&w.id<=e)).slice(0,n),'free')};
-$('quizOpen').onclick=()=>showSection('quizSetup');$('quizCancel').onclick=()=>showSection('home');
+$('freeRecall').onclick=()=>{let s=clamp(+$('rangeStart').value||1,1,2027),e=clamp(+$('rangeEnd').value||2027,1,2027);if(s>e)[s,e]=[e,s];$('rangeStart').value=s;$('rangeEnd').value=e;const n=+$('practiceCount').value||30;state.settings.practiceOrder=$('practiceOrder').value;safeSave();startRecall(orderWords(wordsInScope(state.settings.scope).filter(w=>w.id>=s&&w.id<=e),$('practiceOrder').value).slice(0,n),'free')};
+function orderWords(words,order){return order==='sequential'?[...words].sort((a,b)=>a.id-b.id):shuffle(words)}
+function syncQuizRange(){const [s,e]=scopeRange($('quizScope').value);$('quizRangeStart').value=s;$('quizRangeEnd').value=e}
+
+$('quizOpen').onclick=()=>{syncScopeUI();showSection('quizSetup')};$('quizCancel').onclick=()=>showSection('home');
 function distractors(w){const near=WORDS.filter(x=>x.id!==w.id&&x.ja!==w.ja&&Math.abs(x.id-w.id)<=120),all=WORDS.filter(x=>x.id!==w.id&&x.ja!==w.ja),out=[],seen=new Set([w.ja]);for(const x of shuffle(near).concat(shuffle(all))){if(!seen.has(x.ja)){seen.add(x.ja);out.push(x.ja);if(out.length===3)break}}return out}
-$('startQuiz').onclick=()=>{const src=wordsInScope($('quizScope').value),n=Math.min(+$('quizCount').value||30,src.length);quizQueue=shuffle(src).slice(0,n);quizPos=0;quizCorrect=0;quizWrong=[];showSection('quiz');renderQuiz()};
+$('startQuiz').onclick=()=>{
+  const [lo,hi]=scopeRange($('quizScope').value);
+  const number=(id,fallback)=>{const value=$(id).value.trim(),n=Number(value);return value&&Number.isFinite(n)?clamp(Math.trunc(n),lo,hi):fallback};
+  let s=number('quizRangeStart',lo),e=number('quizRangeEnd',hi);if(s>e)[s,e]=[e,s];
+  $('quizRangeStart').value=s;$('quizRangeEnd').value=e;
+  const src=wordsInScope($('quizScope').value).filter(w=>w.id>=s&&w.id<=e),n=Math.min(+$('quizCount').value||30,src.length),order=$('quizOrder').value;
+  if(!src.length){toast('対象になる単語がありません');return}
+  state.settings.quizOrder=order;safeSave();
+  quizQueue=orderWords(src,order).slice(0,n);quizPos=0;quizCorrect=0;quizWrong=[];
+  $('quizModeLabel').textContent='4択・'+(order==='sequential'?'番号順':'ランダム');
+  showSection('quiz');renderQuiz()
+};
 function renderQuiz(){quizLocked=false;const w=quizQueue[quizPos];$('quizIndex').textContent=`${quizPos+1} / ${quizQueue.length}`;$('quizBar').style.width=(quizPos/quizQueue.length*100)+'%';$('quizNo').textContent='No.'+w.id;$('quizWord').textContent=w.en;$('feedback').textContent='';$('quizNext').classList.add('hidden');const box=$('choices');box.innerHTML='';for(const o of shuffle([w.ja,...distractors(w)])){const b=document.createElement('button');b.className='choice';b.textContent=o;b.onclick=()=>quizAnswer(b,o,w);box.appendChild(b)}}
 function quizAnswer(btn,o,w){if(quizLocked)return;quizLocked=true;const ok=o===w.ja;document.querySelectorAll('.choice').forEach(b=>{if(b.textContent===w.ja)b.classList.add('correct');else if(b===btn&&!ok)b.classList.add('wrong');b.disabled=true});if(ok){quizCorrect++;$('feedback').textContent='○ 正解';$('feedback').className='feedback ok'}else{$('feedback').textContent='× 正解：'+w.ja;$('feedback').className='feedback ng';quizWrong.push(w);const c=card(w.id);c.quizWrong=(c.quizWrong||0)+1;setCard(w.id,c)}$('quizNext').classList.remove('hidden')}
 $('quizNext').onclick=()=>{quizPos++;if(quizPos>=quizQueue.length)finishQuiz();else renderQuiz()};
 function finishQuiz(){const pct=Math.round(quizCorrect/quizQueue.length*100);$('quizPct').textContent=pct+'%';$('quizSub').textContent=`${quizQueue.length}問中 ${quizCorrect}問正解`;const u=[...new Map(quizWrong.map(w=>[w.id,w])).values()];$('wrongWrap').classList.toggle('hidden',!u.length);$('wrongList').innerHTML=u.map(w=>`<div class="wrongItem"><b>No.${w.id} ${esc(w.en)}</b>${esc(w.ja)}</div>`).join('');showSection('quizResult');updateDashboard()}
 $('quizHome').onclick=()=>{showSection('home');updateDashboard()};
 $('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='systan2027_progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
-$('importBtn').onclick=()=>$('importInput').click();$('importInput').onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text()),s=j.state||j;if(!s.cards)throw 0;state=s;safeSave();updateDashboard();toast('進捗を読み込みました')}catch(err){toast('進捗ファイルを読み込めませんでした')}e.target.value=''};
+$('importBtn').onclick=()=>$('importInput').click();$('importInput').onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text()),s=j.state||j;if(!s.cards)throw 0;state=s;safeSave();safeLoad();syncScopeUI(true);$('quizOrder').value=state.settings.quizOrder||'random';$('practiceOrder').value=state.settings.practiceOrder||'random';updateDashboard();toast('進捗を読み込みました')}catch(err){toast('進捗ファイルを読み込めませんでした')}e.target.value=''};
 $('resetBtn').onclick=()=>{if(confirm('SRSの学習履歴をすべてリセットしますか？')){state={cards:{},settings:{dailyNew:+$('dailyNew').value||20,scope:$('scope').value||'s12'},meta:{day:todayKey(),newToday:[],legacyChecked:true},quiz:{}};safeSave();updateDashboard();toast('学習履歴をリセットしました')}};
-safeLoad();$('scope').value=state.settings.scope||'s12';updateDashboard();
+safeLoad();syncScopeUI(true);$('quizOrder').value=state.settings.quizOrder||'random';$('practiceOrder').value=state.settings.practiceOrder||'random';updateDashboard();
 </script>
 </body></html>
