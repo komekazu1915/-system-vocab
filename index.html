@@ -35,6 +35,15 @@
 .mixSearchResults{display:grid;gap:6px;max-height:200px;overflow:auto;margin-top:8px}
 .mixSearchResults button{background:#0d1d31;border:1px solid #2c4765;text-align:left;color:#e4eef9;border-radius:10px;padding:9px;font-size:13px}
 .mixArea{margin-top:10px}
+.mixOptBtn{display:block;width:100%;border:1px solid #2b415d;border-radius:11px;background:#0c192b;color:#a4bbd6;padding:10px;margin-top:11px;font-size:12px;font-weight:700;text-align:center}
+.mixOptBtn:active{background:#16314b}
+.mixOptNote{text-align:center;color:#889fb9;font-size:10px;line-height:1.55;margin-top:5px}
+.forgotResults{border:1px solid #2b415d;background:#0a1829;border-radius:14px;padding:12px;margin-top:12px}
+.forgotResults summary{cursor:pointer;font-weight:800;font-size:13px;color:#cddff5}
+.forgotResults .wrongItem{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.forgotResults .wrongItem b{margin:0}
+.forgotResults .wrongItem button{flex-shrink:0;padding:9px 10px;border:1px solid #354e6b;border-radius:9px;background:#162c45;color:#d5e8fc;font-size:12px}
+
 .mixTwoCols{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .mixStat{background:#0a192c;border:1px solid #273f5a;padding:13px;border-radius:14px;text-align:center}
 .mixStat b{display:block;font-size:24px}
@@ -59,7 +68,7 @@ button:disabled{opacity:.4;cursor:default}
 </head>
 <body>
 <div class="shell">
-  <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・混同克服 v3</small></div><small id="dateLabel"></small></div>
+  <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・混同克服 v3.1</small></div><small id="dateLabel"></small></div>
 
   <section id="home">
     <div class="card">
@@ -143,14 +152,16 @@ button:disabled{opacity:.4;cursor:default}
         <button class="rateBtn slow" data-rate="slow">遅かった<small id="slowNext">—</small></button>
         <button class="rateBtn instant" data-rate="instant">即答できた<small id="instantNext">—</small></button>
       </div>
+      <button id="openConfusion" class="mixOptBtn">似た単語と間違えた → 混同ペアを記録（任意）</button>
+      <div class="mixOptNote">登録した場合は「忘れた」として自動評価。通常は上の3ボタンでそのまま次へ。</div>
     </div>
     <div id="confusionPrompt" class="mixPrompt hidden">
-      <div class="mixPromptTitle">何か別の単語と混同した？ <span class="newPill">任意</span></div>
-      <div class="smallHint">実際に勘違いした単語があれば選択。登録すると次回から比較練習できます。</div>
+      <div class="mixPromptTitle">何の単語と混同した？ <span class="newPill">任意</span></div>
+      <div class="smallHint">混同した相手を選ぶとペアを登録し、この問題を自動的に「忘れた」と判定して次へ進みます。</div>
       <div id="confusionSuggestions" class="mixSuggest"></div>
       <input id="confusionSearch" class="mixSearch" type="search" placeholder="他の単語・番号で検索（例：terrible）" autocomplete="off">
       <div id="confusionMatches" class="mixSearchResults"></div>
-      <button id="skipConfusion" class="primary wide" style="margin-top:11px">混同なし／次の問題へ</button>
+      <button id="skipConfusion" class="soft wide" style="margin-top:11px">戻る（まだ評価しない）</button>
     </div>
     <div class="sessionStats">
       <div class="metric"><b id="sForgot">0</b><span>忘れた</span></div><div class="metric"><b id="sSlow">0</b><span>遅い</span></div><div class="metric"><b id="sInstant">0</b><span>即答</span></div><div class="metric"><b id="sAvg">—</b><span>平均秒</span></div>
@@ -163,6 +174,18 @@ button:disabled{opacity:.4;cursor:default}
     <div class="resultScore" id="recallResultPct">0%</div><div class="resultSub" id="recallResultSub"></div>
     <div class="todayGrid"><div class="metric"><b id="rForgot">0</b><span>忘れた</span></div><div class="metric"><b id="rSlow">0</b><span>遅かった</span></div><div class="metric"><b id="rInstant">0</b><span>即答</span></div></div>
     <div id="relearnSummary" class="mixPrompt"></div>
+    <details id="forgotResultDetails" class="forgotResults hidden">
+      <summary>今回忘れた単語を確認・後から混同登録</summary>
+      <div class="smallHint" style="margin:8px 0">ここで混同ペアを登録しても、「忘れた」を二重に記録しません。</div>
+      <div id="forgotResultList" class="wrongList"></div>
+      <div id="resultConfusionEditor" class="mixPrompt hidden">
+        <div id="resultConfusionTitle" class="mixPromptTitle"></div>
+        <div id="resultConfusionSuggestions" class="mixSuggest"></div>
+        <input id="resultConfusionSearch" type="search" class="mixSearch" placeholder="混同相手の単語・番号を検索" autocomplete="off">
+        <div id="resultConfusionMatches" class="mixSearchResults"></div>
+        <button id="resultConfusionCancel" class="soft wide" style="margin-top:9px">登録せず戻る</button>
+      </div>
+    </details>
     <button id="homeFromRecall" class="primary wide" style="margin-top:14px">ホームへ戻る</button>
   </section>
 
@@ -233,7 +256,7 @@ const CATALOG_BY_ID=new Map(CATALOG.map(g=>[g.id,g]));
 const GROUPS_FOR_WORD=new Map();for(const g of CATALOG){for(const id of g.ids){if(!GROUPS_FOR_WORD.has(id))GROUPS_FOR_WORD.set(id,[]);GROUPS_FOR_WORD.get(id).push(g)}}
 const WORD_BY_TEXT=new Map(WORDS.map(w=>[w.en.toLowerCase(),w]));
 let state={cards:{},settings:{dailyNew:20,scope:'s12',todayOrder:'random',freeOrder:'random',quizOrder:'random'},meta:{day:'',newToday:[]},quiz:{},confusions:{},mixPractice:{}};
-let recallQueue=[],recallPos=0,recallStart=0,recallElapsed=0,recallShown=false,recallStats={forgot:0,slow:0,instant:0,times:[],relearnOK:0,relearnFail:0,deferred:0},recallMode='today',waitingConfusion=false;
+let recallQueue=[],recallPos=0,recallStart=0,recallElapsed=0,recallShown=false,recallStats={forgot:0,slow:0,instant:0,times:[],forgotIds:[],relearnOK:0,relearnFail:0,deferred:0},recallMode='today',waitingConfusion=false;
 let quizQueue=[],quizPos=0,quizCorrect=0,quizWrong=[],quizLocked=false;
 let mixTab='mine',mixLimit=40,mixCurrentGroup=null,mixDrillQueue=[],mixDrillPos=0,mixDrillGood=0,mixDrillShown=false,mixDrillGroupId='';
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2400)}
@@ -276,7 +299,7 @@ function pickToday(scope,order){rollover();const ws=wordsInScope(scope);const du
 function weakScore(w){const c=card(w.id);return(c.lapses||0)*20+(c.quizWrong||0)*8+(c.lastRating==='forgot'?20:c.lastRating==='slow'?8:0)+(c.reps?0:4)-Math.min(c.interval||0,20)}
 function pickWeak(scope,n=30){return wordsInScope(scope).filter(w=>card(w.id).reps||card(w.id).quizWrong).sort((a,b)=>weakScore(b)-weakScore(a)||a.id-b.id).slice(0,n)}
 function showSection(id){for(const x of ['home','recall','recallResult','quizSetup','quiz','quizResult','mix','mixDrill','mixResult'])$(x).classList.add('hidden');$(id).classList.remove('hidden');window.scrollTo(0,0)}
-function startRecall(queue,mode){if(!queue.length){toast(mode==='today'?'今日この範囲で出題するカードはありません':'対象になる単語がありません');return}recallQueue=queue.map(w=>({id:w.id,requeued:false}));recallPos=0;waitingConfusion=false;recallStats={forgot:0,slow:0,instant:0,times:[],relearnOK:0,relearnFail:0,deferred:0};recallMode=mode;showSection('recall');renderRecall()}
+function startRecall(queue,mode){if(!queue.length){toast(mode==='today'?'今日この範囲で出題するカードはありません':'対象になる単語がありません');return}recallQueue=queue.map(w=>({id:w.id,requeued:false}));recallPos=0;waitingConfusion=false;recallStats={forgot:0,slow:0,instant:0,times:[],forgotIds:[],relearnOK:0,relearnFail:0,deferred:0};recallMode=mode;showSection('recall');renderRecall()}
 function renderRecall(){if(recallPos>=recallQueue.length){finishRecall();return}recallShown=false;waitingConfusion=false;$('confusionPrompt').classList.add('hidden');const item=recallQueue[recallPos],w=WORDS[item.id-1];$('recallIndex').textContent=`${recallPos+1} / ${recallQueue.length}`;$('recallBar').style.width=(recallPos/recallQueue.length*100)+'%';$('recallNo').textContent='No.'+w.id;$('recallWord').textContent=w.en;$('recallStage').textContent=stageOf(w.id).name;$('timerLabel').textContent=item.requeued?'10問以上あけた覚え直し確認（習得度には加算しません）':'考えてから「答えを見る」';$('showAnswer').classList.remove('hidden');$('answerPanel').classList.add('hidden');document.querySelectorAll('.rateBtn').forEach(b=>b.disabled=false);recallStart=performance.now()}
 function resolveNextRecall(){recallPos++;renderRecall()}
 // Requeue only after ten DIFFERENT other words. Short sessions defer to the 10-minute SRS due instead.
@@ -288,14 +311,71 @@ function suggestedRivals(id){const preferred=new Map();for(const g of GROUPS_FOR
 function pairKey(a,b){return [a,b].sort((x,y)=>x-y).join('-')}
 function registerPair(a,b){a=Number(a);b=Number(b);if(!Number.isInteger(a)||!Number.isInteger(b)||a===b||a<1||b<1||a>2027||b>2027){toast('異なる2語を選んでください');return false}const k=pairKey(a,b),item=state.confusions[k]||{ids:[Math.min(a,b),Math.max(a,b)],count:0,createdAt:new Date().toISOString()};item.count++;item.lastAt=new Date().toISOString();state.confusions[k]=item;safeSave();toast('混同ペアとして登録しました');return true}
 function findWord(v){const q=String(v||'').trim().toLowerCase();if(!q)return null;const n=Number(q.replace(/^no\.?\s*/i,''));if(Number.isInteger(n)&&n>=1&&n<=2027)return WORDS[n-1];return WORD_BY_TEXT.get(q)||null}
-function setConfusionPrompt(id){waitingConfusion=true;$('answerPanel').classList.add('hidden');$('showAnswer').classList.add('hidden');$('confusionPrompt').classList.remove('hidden');const sug=$('confusionSuggestions');sug.innerHTML='';for(const w of suggestedRivals(id)){const b=document.createElement('button');b.className='mixSuggestion';b.innerHTML=`<span>No.${w.id}　${esc(w.en)}</span><small>${esc(w.ja)}</small>`;b.onclick=()=>{registerPair(id,w.id);resolveNextRecall()};sug.appendChild(b)}if(!sug.children.length)sug.innerHTML='<div class="smallHint">候補がない場合は下の検索から登録できます。</div>';$('confusionSearch').value='';$('confusionMatches').innerHTML='';$('confusionSearch').oninput=()=>{const q=$('confusionSearch').value.trim().toLowerCase(),box=$('confusionMatches');box.innerHTML='';if(!q)return;let matches=WORDS.filter(w=>w.id!==id&&(String(w.id)===q||w.en.toLowerCase().includes(q))).slice(0,8);for(const w of matches){const b=document.createElement('button');b.textContent=`No.${w.id} ${w.en} — ${w.ja}`;b.onclick=()=>{registerPair(id,w.id);resolveNextRecall()};box.appendChild(b)}}}
-function rateRecall(rate){if(!recallShown||waitingConfusion)return;recallShown=false;const item=recallQueue[recallPos],id=item.id;if(item.requeued){const c=card(id);c.lastRelearnAt=Date.now();c.lastRelearnRating=rate;c.relearnCount=(c.relearnCount||0)+1;setCard(id,c);if(rate==='instant'||rate==='slow')recallStats.relearnOK++;else recallStats.relearnFail++;resolveNextRecall();return}
- applyRating(id,rate,recallElapsed);recallStats[rate]++;recallStats.times.push(recallElapsed);if(rate==='forgot'){queueRelearn(id);updateRecallStats();setConfusionPrompt(id)}else{updateRecallStats();resolveNextRecall()}}
+// Optional entry: evaluating normally never opens the confusion selector.
+function setConfusionPrompt(id){
+ if(!recallShown||waitingConfusion||recallQueue[recallPos]?.id!==id)return;
+ waitingConfusion=true;$('answerPanel').classList.add('hidden');$('confusionPrompt').classList.remove('hidden');
+ populateRivalPicker(id,'confusionSuggestions','confusionSearch','confusionMatches',other=>{
+   if(!waitingConfusion||!recallShown||recallQueue[recallPos]?.id!==id)return;
+   if(registerPair(id,other))rateRecall('forgot',true);
+ });
+}
+function populateRivalPicker(id,suggestionsId,searchId,matchesId,onPick){
+ const sug=$(suggestionsId);sug.innerHTML='';
+ for(const w of suggestedRivals(id)){
+   const b=document.createElement('button');b.className='mixSuggestion';b.innerHTML=`<span>No.${w.id}　${esc(w.en)}</span><small>${esc(w.ja)}</small>`;
+   b.onclick=()=>onPick(w.id);sug.appendChild(b);
+ }
+ if(!sug.children.length)sug.innerHTML='<div class="smallHint">候補がない場合は下の検索から登録できます。</div>';
+ $(searchId).value='';$(matchesId).innerHTML='';
+ $(searchId).oninput=()=>{
+   const q=$(searchId).value.trim().toLowerCase(),box=$(matchesId);box.innerHTML='';if(!q)return;
+   const matches=WORDS.filter(w=>w.id!==id&&(String(w.id)===q||w.en.toLowerCase().includes(q))).slice(0,8);
+   for(const w of matches){const b=document.createElement('button');b.textContent=`No.${w.id} ${w.en} — ${w.ja}`;b.onclick=()=>onPick(w.id);box.appendChild(b)}
+ };
+}
+function rateRecall(rate,fromConfusion=false){
+ if(!recallShown||(waitingConfusion&&!fromConfusion))return;
+ recallShown=false;waitingConfusion=false;
+ const item=recallQueue[recallPos],id=item.id;
+ if(item.requeued){
+   // Same-session relearning must never update the long-term SRS rating.
+   const c=card(id);c.lastRelearnAt=Date.now();c.lastRelearnRating=rate;c.relearnCount=(c.relearnCount||0)+1;setCard(id,c);
+   if(rate==='instant'||rate==='slow')recallStats.relearnOK++;else recallStats.relearnFail++;
+   resolveNextRecall();return;
+ }
+ applyRating(id,rate,recallElapsed);recallStats[rate]++;recallStats.times.push(recallElapsed);
+ if(rate==='forgot'){recallStats.forgotIds.push(id);queueRelearn(id)}
+ updateRecallStats();resolveNextRecall();
+}
 function updateRecallStats(){$('sForgot').textContent=recallStats.forgot;$('sSlow').textContent=recallStats.slow;$('sInstant').textContent=recallStats.instant;const a=recallStats.times;$('sAvg').textContent=a.length?(a.reduce((x,y)=>x+y,0)/a.length/1000).toFixed(1)+'s':'—'}
-function finishRecall(){const total=recallStats.forgot+recallStats.slow+recallStats.instant,good=recallStats.instant;$('recallResultPct').textContent=pct(good,total);$('recallResultSub').textContent=`${total}語の初回評価・即答率`;$('rForgot').textContent=recallStats.forgot;$('rSlow').textContent=recallStats.slow;$('rInstant').textContent=recallStats.instant;$('relearnSummary').innerHTML=`<b>短期の覚え直し</b><div class="smallHint">覚え直し成功：${recallStats.relearnOK}語 ／ まだ不安：${recallStats.relearnFail}語 ／ 次回に持ち越し：${recallStats.deferred}語</div><div class="hint">同じ回の再正解では「忘れた」履歴・長期SRSの評価を上書きしません。</div>`;showSection('recallResult');updateDashboard()}
+function finishRecall(){const total=recallStats.forgot+recallStats.slow+recallStats.instant,good=recallStats.instant;$('recallResultPct').textContent=pct(good,total);$('recallResultSub').textContent=`${total}語の初回評価・即答率`;$('rForgot').textContent=recallStats.forgot;$('rSlow').textContent=recallStats.slow;$('rInstant').textContent=recallStats.instant;$('relearnSummary').innerHTML=`<b>短期の覚え直し</b><div class="smallHint">覚え直し成功：${recallStats.relearnOK}語 ／ まだ不安：${recallStats.relearnFail}語 ／ 次回に持ち越し：${recallStats.deferred}語</div><div class="hint">同じ回の再正解では「忘れた」履歴・長期SRSの評価を上書きしません。</div>`;renderForgotResults();showSection('recallResult');updateDashboard()}
+function renderForgotResults(){
+ const ids=[...new Set(recallStats.forgotIds)];const area=$('forgotResultDetails');
+ area.classList.toggle('hidden',ids.length===0);area.open=false;$('resultConfusionEditor').classList.add('hidden');
+ const list=$('forgotResultList');list.innerHTML='';
+ for(const id of ids){const w=WORDS[id-1],row=document.createElement('div');row.className='wrongItem';
+   const label=document.createElement('div');label.innerHTML=`<b>No.${id} ${esc(w.en)}</b><span class="smallHint">${esc(w.ja)}</span>`;
+   const b=document.createElement('button');b.textContent='混同登録';b.onclick=()=>openResultConfusion(id);
+   row.append(label,b);list.appendChild(row);
+ }
+}
+function openResultConfusion(id){
+ const w=WORDS[id-1];$('resultConfusionEditor').classList.remove('hidden');
+ $('resultConfusionTitle').textContent=`No.${id} ${w.en} と混同した相手を選ぶ`;
+ populateRivalPicker(id,'resultConfusionSuggestions','resultConfusionSearch','resultConfusionMatches',other=>{
+   if(registerPair(id,other)){
+     // Already rated forgot during the session; only the pair count changes here.
+     $('resultConfusionEditor').classList.add('hidden');
+   }
+ });
+ $('resultConfusionEditor').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+$('resultConfusionCancel').onclick=()=>$('resultConfusionEditor').classList.add('hidden');
 $('showAnswer').onclick=()=>{if(recallShown||waitingConfusion)return;recallShown=true;recallElapsed=performance.now()-recallStart;const item=recallQueue[recallPos],w=WORDS[item.id-1],c=card(w.id);$('recallAnswer').textContent=w.ja;$('timerLabel').textContent=`答えを見るまで ${(recallElapsed/1000).toFixed(1)} 秒`;$('forgotNext').textContent=item.requeued?'SRS変化なし':preview('forgot',c).label;$('slowNext').textContent=item.requeued?'SRS変化なし':preview('slow',c).label;$('instantNext').textContent=item.requeued?'SRS変化なし':preview('instant',c).label;$('showAnswer').classList.add('hidden');$('answerPanel').classList.remove('hidden')};
 document.querySelectorAll('.rateBtn').forEach(b=>b.onclick=()=>rateRecall(b.dataset.rate));
-$('skipConfusion').onclick=()=>resolveNextRecall();
+$('openConfusion').onclick=()=>{if(recallShown&&!waitingConfusion)setConfusionPrompt(recallQueue[recallPos].id)};
+$('skipConfusion').onclick=()=>{if(!waitingConfusion)return;waitingConfusion=false;$('confusionPrompt').classList.add('hidden');$('answerPanel').classList.remove('hidden')};
 $('stopRecall').onclick=()=>finishRecall();$('homeFromRecall').onclick=()=>{showSection('home');updateDashboard()};
 function orderMode(selectId){return $(selectId).value==='sequential'?'sequential':'random'}
 function selectQueue(source,n,order){return(order==='random'?shuffle(source):[...source].sort((a,b)=>a.id-b.id)).slice(0,n)}
@@ -337,7 +417,7 @@ $('mixDrillAnswerBtn').onclick=()=>{mixDrillShown=true;$('mixDrillAnswer').textC
 $('mixDrillGood').onclick=()=>markMixDrill(true);$('mixDrillMiss').onclick=()=>markMixDrill(false);
 $('mixDrillQuit').onclick=()=>{showSection('mix');renderMixList()};$('mixResultBack').onclick=()=>{showSection('mix');renderMixList()};
 // Backup/import must preserve old SRS card structure as well as new optional confusion data.
-$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({version:3,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='systan2027_progress_v3.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)};
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({version:'3.1',exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='systan2027_progress_v3_1.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)};
 $('importBtn').onclick=()=>$('importInput').click();$('importInput').onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text()),s=j.state||j;if(!s.cards||typeof s.cards!=='object')throw Error('invalid');if(!confirm('読み込む進捗で現在の学習履歴を置き換えます。続けますか？')){e.target.value='';return}state=normalizeState(s);safeSave();$('scope').value=state.settings.scope||'s12';for(const [id,k]of [['todayOrder','todayOrder'],['freeOrder','freeOrder'],['quizOrder','quizOrder']])$(id).value=state.settings[k]||'random';updateDashboard();toast('進捗を読み込みました')}catch(err){toast('進捗ファイルを読み込めませんでした')}e.target.value=''};
 $('resetBtn').onclick=()=>{if(confirm('SRS・混同ペアを含む学習履歴をすべてリセットしますか？')){state=normalizeState({cards:{},settings:{...state.settings},meta:{day:todayKey(),newToday:[],legacyChecked:true},quiz:{},confusions:{},mixPractice:{}});safeSave();updateDashboard();toast('学習履歴をリセットしました')}};
 // Initial state restoration — retains exact same KEY as versions 1/2.
