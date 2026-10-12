@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#07101d">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f3f8fa">
 <title>シス単 SRS 2027</title>
 <style>
 :root{--bg:#07101d;--panel:#101c2f;--panel2:#0a1424;--line:#2b3d56;--text:#f8fafc;--muted:#98a9bd;--blue:#60a5fa;--green:#34d399;--amber:#fbbf24;--red:#fb7185;--purple:#a78bfa}
@@ -64,11 +64,71 @@
 .mixControls button{flex:1;min-width:110px;font-size:13px}
 button:disabled{opacity:.4;cursor:default}
 @media(max-width:400px){.mixTwoCols{grid-template-columns:1fr}.word{font-size:34px}}
+
+/* v3.2 light theme: high-contrast, readable on iPhone, original white aesthetic */
+:root{--bg:#f3f8fa;--panel:#fff;--panel2:#f5f9fb;--line:#d4e0e6;--text:#182f40;--muted:#5c7282;--blue:#338bd6;--green:#149b83;--amber:#bd7a11;--red:#c33f57;--purple:#8265b7}
+html,body{background:#f3f8fa!important;color:var(--text)!important;color-scheme:light}
+.shell{padding-bottom:calc(42px + env(safe-area-inset-bottom));max-width:780px}
+.brand h1{color:#142d41}.brand small{color:#566e7c}
+.card{background:#fff;border:1px solid #d7e3e8;box-shadow:0 4px 22px rgba(22,65,88,.045)}
+.metric,.detailMetric{background:#f5f9fb;border:1px solid #d8e4ea;color:#172f42}
+.sectionTitle,.hint,.smallHint,.stageMeta,.detailMetric span,.metric span,.topbar,.resultSub,.wordNo,.timer,.field label,.orderField label{color:#607787}
+.stage{background:#f4f9fb;border-color:#ccdde4}
+.stageHead b,.stagePct,.stageDetailHead b,.stageDetailHead strong{color:#14374b}
+.bar,.progress{background:#dce8ed}.bar>i{background:linear-gradient(90deg,#4a9dec,#31b994)}.progress i{background:#209c88}
+.combined{background:linear-gradient(130deg,#e9f5f1,#edf6fb);border:1px solid #abcfc6;color:#173d4d}
+.stageDetail{background:#fbfdfe;border-color:#bed6df}
+.field input,.field select,.orderField select,.mixSearch{background:#fff!important;color:#183548!important;border:1px solid #bdcfd8!important;font-size:16px}
+.primary{background:#116c66;color:#fff;border:1px solid #116c66}
+.secondary{background:#e5f3ef;color:#155c53;border:1px solid #b9d7ce}
+.soft{background:#f3f7fa;color:#244658;border:1px solid #ccdae1}
+.danger{background:#fce9ed;color:#9c2a43;border:1px solid #ebacba}
+.smallLink{color:#246d97}
+.word{color:#17384c}.stageTag{background:#e6f5f0;color:#216b5b}.answerBox{background:#f4f9fb;border:1px solid #cfdfe5;color:#18374b}
+.rateBtn{color:#183448;border-radius:13px}
+.rateBtn.forgot{background:#fff0f2;border-color:#eaa8b4;color:#a12a44}
+.rateBtn.slow{background:#fff7de;border-color:#e5ca7d;color:#80590a}
+.rateBtn.instant{background:#eaf8f1;border-color:#99d5be;color:#116747}
+.rateBtn small{color:inherit;opacity:.85}
+.choice,.wrongItem{background:#f7fafb;color:#18364a;border-color:#d4e1e7}
+.choice.correct{background:#e2f5e9;border-color:#3caa80;color:#155b44}
+.choice.wrong{background:#fff0f0;border-color:#d85b72;color:#892d3e}
+.feedback.ok{color:#137153}.feedback.ng{color:#bd344c}
+.toast{background:#17394d;color:#fff;box-shadow:0 5px 22px #17394d33}
+.divider{background:#dbe5eb}
+.reviewEmpty b{color:#1b384d}
+.mixPrompt,.forgotResults{background:#f6fafb;border-color:#cee0e8}
+.mixSuggestion{background:#fff;color:#204259;border-color:#cadce5}
+.mixSuggestion small{color:#5f7887}
+.mixSearchResults{max-height:310px;overflow:auto}
+.mixSearchResults button{background:#fff;color:#1a3b4e;border-color:#d0dfe5;line-height:1.5}
+.mixSearchResults button:active,.mixSuggestion:active{background:#e8f5f2}
+.mixOptBtn{background:#edf5f7;border-color:#c2d5dd;color:#266e7d}
+.mixOptNote{color:#597988}.forgotResults summary{color:#1c5268}
+.forgotResults .wrongItem button{background:#e7f4f0;border:1px solid #bcdacf;color:#155d51}
+.mixStat{background:#f4f9fa;border-color:#d1e1e6}
+.newPill{background:#e0f1ef;color:#16675d}
+.mixTabs button.active{background:#ceeae3;color:#125a50;border-color:#7cbaad}
+.mixItem{background:#fff;color:#193c52;border-color:#d1e0e7}
+.mixItemDesc{color:#587789}
+.mixTerm{background:#f6fafb;border-color:#d3e1e7}
+.mixTerm .translation{color:#305566}
+.mixGuide{background:#ecf6f6;border-left-color:#279d8f;color:#2a5861}
+.mixCounter{color:#397b86}
+.mixAllCard{background:#edf8f6;border:1px solid #b8dcd4;border-radius:16px;padding:15px;margin:12px 0 18px}
+.mixAllTop{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.mixAllTop b{font-size:17px;color:#164e4a}
+.mixAllTop p{font-size:12px;color:#55717a;line-height:1.6;margin:7px 0 12px}
+.mixAllCount{white-space:nowrap;background:#fff;color:#12645a;border:1px solid #c4e3dc;font-weight:800;font-size:14px;padding:8px;border-radius:12px}
+.mixAllCard .smallHint{margin-top:9px}
+.mixReviewWords{margin:14px 0}.mixMissItem{padding:9px 12px;background:#fff4f4;border:1px solid #f1d1d5;border-radius:10px;margin:5px 0;font-size:13px;color:#5a3740}
+@media(max-width:520px){.shell{padding-top:max(70px,calc(16px + env(safe-area-inset-top)))}.brand h1{font-size:24px}.stageMeta{line-height:1.5}.rateBtn{font-size:13px}}
+
 </style>
 </head>
 <body>
 <div class="shell">
-  <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・混同克服 v3.1</small></div><small id="dateLabel"></small></div>
+  <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・混同克服 v3.2</small></div><small id="dateLabel"></small></div>
 
   <section id="home">
     <div class="card">
@@ -159,7 +219,7 @@ button:disabled{opacity:.4;cursor:default}
       <div class="mixPromptTitle">何の単語と混同した？ <span class="newPill">任意</span></div>
       <div class="smallHint">混同した相手を選ぶとペアを登録し、この問題を自動的に「忘れた」と判定して次へ進みます。</div>
       <div id="confusionSuggestions" class="mixSuggest"></div>
-      <input id="confusionSearch" class="mixSearch" type="search" placeholder="他の単語・番号で検索（例：terrible）" autocomplete="off">
+      <input id="confusionSearch" class="mixSearch" type="search" placeholder="日本語訳・英単語・番号（例：ひどい）" autocomplete="off">
       <div id="confusionMatches" class="mixSearchResults"></div>
       <button id="skipConfusion" class="soft wide" style="margin-top:11px">戻る（まだ評価しない）</button>
     </div>
@@ -181,7 +241,7 @@ button:disabled{opacity:.4;cursor:default}
       <div id="resultConfusionEditor" class="mixPrompt hidden">
         <div id="resultConfusionTitle" class="mixPromptTitle"></div>
         <div id="resultConfusionSuggestions" class="mixSuggest"></div>
-        <input id="resultConfusionSearch" type="search" class="mixSearch" placeholder="混同相手の単語・番号を検索" autocomplete="off">
+        <input id="resultConfusionSearch" class="mixSearch" type="search" placeholder="日本語訳・英単語・番号（例：ひどい）" autocomplete="off">
         <div id="resultConfusionMatches" class="mixSearchResults"></div>
         <button id="resultConfusionCancel" class="soft wide" style="margin-top:9px">登録せず戻る</button>
       </div>
@@ -213,11 +273,15 @@ button:disabled{opacity:.4;cursor:default}
     <div class="rowBetween"><div class="sectionTitle">混同克服</div><button id="mixHome" class="smallLink">ホームへ</button></div>
     <div class="mixTwoCols"><div class="mixStat"><b id="myPairCount">0</b><span class="smallHint">自分の混同ペア</span></div><div class="mixStat"><b id="mixCatalogCount">328</b><span class="smallHint">登録済みの比較グループ</span></div></div>
     <div class="hint">候補集は参考です。「実際に混同した」ペアは自分で登録できます。比較や短期練習だけではSRS習得度は上がりません。</div>
+    <div class="mixAllCard">
+      <div class="mixAllTop"><div><b>混同単語・総合Recall</b><p>登録した全ペアの単語を重複なく混ぜて出題します。ペア順は表示されません。</p></div><span id="mixAllWordsCount" class="mixAllCount">0語</span></div>
+      <button id="mixStartAll" class="primary wide" disabled>登録した全単語をランダムでテスト</button>
+      <div class="smallHint" id="mixAllHistory">2語以上登録すると使えます。テストの正解は通常の習得度には加算しません。</div>
+    </div>
     <div class="mixTabs"><button class="soft active" data-mixtab="mine">自分の混同</button><button class="soft" data-mixtab="A">優先候補</button><button class="soft" data-mixtab="all">全候補</button></div>
     <div id="mixMineControls" class="mixArea">
       <div class="sectionTitle">ペアを自分で登録</div>
-      <div class="mixTwoCols"><input class="mixSearch" id="mixWordA" list="vocabOptions" placeholder="1つ目：tribe"><input class="mixSearch" id="mixWordB" list="vocabOptions" placeholder="2つ目：terrible"></div>
-      <datalist id="vocabOptions"></datalist>
+      <div class="mixTwoCols"><div><input class="mixSearch" id="mixWordA" placeholder="1語目：英語・日本語・番号" autocomplete="off"><div id="mixChoicesA" class="mixSearchResults"></div></div><div><input class="mixSearch" id="mixWordB" placeholder="2語目：英語・日本語・番号" autocomplete="off"><div id="mixChoicesB" class="mixSearchResults"></div></div></div>
       <button id="mixAddPair" class="secondary wide" style="margin-top:10px">混同ペアとして登録</button>
     </div>
     <div id="mixFilterArea" class="hidden"><input id="mixFilter" type="search" class="mixSearch" placeholder="単語・番号・グループ名で検索"></div>
@@ -230,7 +294,7 @@ button:disabled{opacity:.4;cursor:default}
     </div>
   </section>
   <section id="mixDrill" class="card hidden">
-    <div class="topbar"><span id="mixDrillPosition"></span><span>混同ミニRecall</span></div><div class="progress"><i id="mixDrillBar"></i></div>
+    <div class="topbar"><span id="mixDrillPosition"></span><span id="mixDrillModeLabel">混同ミニRecall</span></div><div class="progress"><i id="mixDrillBar"></i></div>
     <div class="wordArea"><div class="wordNo" id="mixDrillNo"></div><div class="word" id="mixDrillWord"></div><div class="smallHint">選択肢なしで意味を思い出してから答えを表示</div></div>
     <button id="mixDrillAnswerBtn" class="primary wide">答えを見る</button>
     <div id="mixDrillFeedback" class="hidden"><div class="answerBox" id="mixDrillAnswer"></div>
@@ -239,7 +303,10 @@ button:disabled{opacity:.4;cursor:default}
     <button id="mixDrillQuit" class="smallLink wide" style="margin-top:12px">混同克服へ戻る</button>
   </section>
   <section id="mixResult" class="card hidden"><div class="sectionTitle">混同ミニRecall 結果</div><div class="resultScore" id="mixResultPct">0%</div>
-    <div class="resultSub" id="mixResultText"></div><button id="mixResultBack" class="primary wide">混同克服へ戻る</button></section>
+    <div class="resultSub" id="mixResultText"></div>
+    <div id="mixResultWrong" class="mixReviewWords hidden"></div>
+    <button id="mixRetryWrong" class="secondary wide hidden" style="margin-bottom:9px">間違えた単語だけ再テスト</button>
+    <button id="mixResultBack" class="primary wide">混同克服へ戻る</button></section>
 </div>
 <div id="toast" class="toast"></div>
 <script>
@@ -255,10 +322,10 @@ const CATALOG=[{"id":"PERSONAL_TRIBE","type":"spell","priority":"A","label":"tri
 const CATALOG_BY_ID=new Map(CATALOG.map(g=>[g.id,g]));
 const GROUPS_FOR_WORD=new Map();for(const g of CATALOG){for(const id of g.ids){if(!GROUPS_FOR_WORD.has(id))GROUPS_FOR_WORD.set(id,[]);GROUPS_FOR_WORD.get(id).push(g)}}
 const WORD_BY_TEXT=new Map(WORDS.map(w=>[w.en.toLowerCase(),w]));
-let state={cards:{},settings:{dailyNew:20,scope:'s12',todayOrder:'random',freeOrder:'random',quizOrder:'random'},meta:{day:'',newToday:[]},quiz:{},confusions:{},mixPractice:{}};
+let state={cards:{},settings:{dailyNew:20,scope:'s12',todayOrder:'random',freeOrder:'random',quizOrder:'random'},meta:{day:'',newToday:[]},quiz:{},confusions:{},mixPractice:{},mixAllStats:{}};
 let recallQueue=[],recallPos=0,recallStart=0,recallElapsed=0,recallShown=false,recallStats={forgot:0,slow:0,instant:0,times:[],forgotIds:[],relearnOK:0,relearnFail:0,deferred:0},recallMode='today',waitingConfusion=false;
 let quizQueue=[],quizPos=0,quizCorrect=0,quizWrong=[],quizLocked=false;
-let mixTab='mine',mixLimit=40,mixCurrentGroup=null,mixDrillQueue=[],mixDrillPos=0,mixDrillGood=0,mixDrillShown=false,mixDrillGroupId='';
+let mixTab='mine',mixLimit=40,mixCurrentGroup=null,mixDrillQueue=[],mixDrillPos=0,mixDrillGood=0,mixDrillShown=false,mixDrillGroupId='',mixDrillMode='group',mixDrillMissIds=[],mixLastMissIds=[],mixAllPriorTotal=0;
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2400)}
 function todayKey(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 function normalizeState(s){
@@ -270,6 +337,7 @@ function normalizeState(s){
   if(!out.quiz||typeof out.quiz!=='object')out.quiz={};
   if(!out.confusions||typeof out.confusions!=='object')out.confusions={};
   if(!out.mixPractice||typeof out.mixPractice!=='object')out.mixPractice={};
+  if(!out.mixAllStats||typeof out.mixAllStats!=='object')out.mixAllStats={};
   return out;
 }
 function safeSave(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){toast('保存に失敗：進捗をバックアップしてください')}}
@@ -311,6 +379,20 @@ function suggestedRivals(id){const preferred=new Map();for(const g of GROUPS_FOR
 function pairKey(a,b){return [a,b].sort((x,y)=>x-y).join('-')}
 function registerPair(a,b){a=Number(a);b=Number(b);if(!Number.isInteger(a)||!Number.isInteger(b)||a===b||a<1||b<1||a>2027||b>2027){toast('異なる2語を選んでください');return false}const k=pairKey(a,b),item=state.confusions[k]||{ids:[Math.min(a,b),Math.max(a,b)],count:0,createdAt:new Date().toISOString()};item.count++;item.lastAt=new Date().toISOString();state.confusions[k]=item;safeSave();toast('混同ペアとして登録しました');return true}
 function findWord(v){const q=String(v||'').trim().toLowerCase();if(!q)return null;const n=Number(q.replace(/^no\.?\s*/i,''));if(Number.isInteger(n)&&n>=1&&n<=2027)return WORDS[n-1];return WORD_BY_TEXT.get(q)||null}
+// A Japanese-to-English lookup: searches all 2027 existing meanings without changing dictionary data.
+function normalizeLookup(s){return String(s||'').normalize('NFKC').toLowerCase().replace(/[\s　]+/g,'').replace(/[～〜・、,。;；]/g,'')}
+function searchWords(q,excluded,limit=14){
+ const query=normalizeLookup(q);if(!query)return[];
+ let matches=[];
+ for(const w of WORDS){if(w.id===excluded)continue;
+   const en=normalizeLookup(w.en),ja=normalizeLookup(w.ja),id=String(w.id);
+   if(en.includes(query)||ja.includes(query)||id===query){
+     const score=id===query?0:en===query?1:ja===query?2:ja.startsWith(query)?3:en.startsWith(query)?4:ja.includes(query)?5:6;
+     matches.push({w,score});
+   }
+ }
+ return matches.sort((a,b)=>a.score-b.score||a.w.id-b.w.id).slice(0,limit).map(x=>x.w);
+}
 // Optional entry: evaluating normally never opens the confusion selector.
 function setConfusionPrompt(id){
  if(!recallShown||waitingConfusion||recallQueue[recallPos]?.id!==id)return;
@@ -330,8 +412,9 @@ function populateRivalPicker(id,suggestionsId,searchId,matchesId,onPick){
  $(searchId).value='';$(matchesId).innerHTML='';
  $(searchId).oninput=()=>{
    const q=$(searchId).value.trim().toLowerCase(),box=$(matchesId);box.innerHTML='';if(!q)return;
-   const matches=WORDS.filter(w=>w.id!==id&&(String(w.id)===q||w.en.toLowerCase().includes(q))).slice(0,8);
+   const matches=searchWords(q,id,15);
    for(const w of matches){const b=document.createElement('button');b.textContent=`No.${w.id} ${w.en} — ${w.ja}`;b.onclick=()=>onPick(w.id);box.appendChild(b)}
+   if(!matches.length)box.innerHTML='<div class="smallHint">見つかりません。別の日本語訳や英語を試してください。</div>';
  };
 }
 function rateRecall(rate,fromConfusion=false){
@@ -395,10 +478,17 @@ function finishQuiz(){$('quizPct').textContent=pct(quizCorrect,quizQueue.length)
 $('quizHome').onclick=()=>{showSection('home');updateDashboard()};
 // Confusion catalog + explicit personal misconception tracking.
 function myPairs(){return Object.values(state.confusions).filter(x=>x&&Array.isArray(x.ids)&&x.ids.length===2).sort((a,b)=>(b.count||0)-(a.count||0)||(new Date(b.lastAt).getTime()||0)-(new Date(a.lastAt).getTime()||0))}
+function mixedUniqueIds(){return [...new Set(myPairs().flatMap(p=>p.ids).filter(id=>Number.isInteger(id)&&id>=1&&id<=WORDS.length))]}
+function updateMixOverview(){
+ const ids=mixedUniqueIds();$('mixAllWordsCount').textContent=ids.length+'語';$('mixStartAll').disabled=ids.length<2;
+ const attempted=ids.filter(id=>(state.mixAllStats[id]||{}).attempts>0).length;
+ $('mixAllHistory').textContent=ids.length<2?'まず混同ペアを登録してください。':`前回までに総合テストで確認した単語：${attempted}/${ids.length}語。各語は重複なく1回ずつ出題します。`;
+}
+
 function mixWordName(id){const w=WORDS[id-1];return w?w.en:''}
 function mixPairGroup(p){const match=CATALOG.find(g=>g.ids.length===2&&pairKey(...g.ids)===pairKey(...p.ids));return{id:'mine:'+pairKey(...p.ids),type:'personal',priority:'A',label:match?match.label:p.ids.map(mixWordName).join(' / '),ids:p.ids,point:match?match.point:'実際に混同したペア。日本語訳と品詞・文脈の違いを比べましょう。',count:p.count}}
 function listCandidates(){if(mixTab==='mine')return myPairs().map(mixPairGroup);let groups=CATALOG.filter(g=>mixTab==='all'||g.priority==='A');const q=$('mixFilter').value.trim().toLowerCase();if(q)groups=groups.filter(g=>g.label.toLowerCase().includes(q)||g.point.toLowerCase().includes(q)||g.ids.some(id=>String(id)===q||mixWordName(id).toLowerCase().includes(q)));return groups}
-function renderMixList(){const groups=listCandidates();$('myPairCount').textContent=myPairs().length;$('mixCatalogCount').textContent=CATALOG.length;const box=$('mixList');box.innerHTML='';for(const g of groups.slice(0,mixLimit)){const b=document.createElement('button');b.className='mixItem';b.innerHTML=`<div class="mixItemTitle"><span>${esc(g.label)}</span><span class="newPill">${g.count?g.count+'回':g.priority}</span></div><div class="mixItemDesc">${g.ids.map(id=>`No.${id}`).join(' / ')} ・ ${esc(g.point)}</div>`;b.onclick=()=>openMixGroup(g);box.appendChild(b)}if(!groups.length)box.innerHTML='<div class="smallHint">この条件ではまだペアがありません。上の検索・追加を使ってください。</div>';$('mixMore').classList.toggle('hidden',groups.length<=mixLimit)}
+function renderMixList(){const groups=listCandidates();updateMixOverview();$('myPairCount').textContent=myPairs().length;$('mixCatalogCount').textContent=CATALOG.length;const box=$('mixList');box.innerHTML='';for(const g of groups.slice(0,mixLimit)){const b=document.createElement('button');b.className='mixItem';b.innerHTML=`<div class="mixItemTitle"><span>${esc(g.label)}</span><span class="newPill">${g.count?g.count+'回':g.priority}</span></div><div class="mixItemDesc">${g.ids.map(id=>`No.${id}`).join(' / ')} ・ ${esc(g.point)}</div>`;b.onclick=()=>openMixGroup(g);box.appendChild(b)}if(!groups.length)box.innerHTML='<div class="smallHint">この条件ではまだペアがありません。上の検索・追加を使ってください。</div>';$('mixMore').classList.toggle('hidden',groups.length<=mixLimit)}
 function changeMixTab(tab){mixTab=tab;mixLimit=40;$('mixDetail').classList.add('hidden');$('mixFilterArea').classList.toggle('hidden',tab==='mine');$('mixMineControls').classList.toggle('hidden',tab!=='mine');document.querySelectorAll('[data-mixtab]').forEach(b=>b.classList.toggle('active',b.dataset.mixtab===tab));renderMixList()}
 function openMix(){showSection('mix');changeMixTab('mine')}
 function groupRegistered(g){return g.ids.length===2 && Boolean(state.confusions[pairKey(...g.ids)])}
@@ -406,20 +496,85 @@ function openMixGroup(g){mixCurrentGroup=g;$('mixDetail').classList.remove('hidd
  $('mixTerms').innerHTML=g.ids.map(id=>{const w=WORDS[id-1];return`<div class="mixTerm"><b>${esc(w.en)}</b> <small class="smallHint">No.${w.id}</small><div class="translation">${esc(w.ja)}</div></div>`}).join('');$('mixPoint').textContent=g.point;
  $('mixRegisterFromGroup').textContent=groupRegistered(g)?'もう一度混同を記録':g.ids.length===2?'このペアを混同登録':'ペアを選んで登録';$('mixDetail').scrollIntoView({behavior:'smooth',block:'start'})}
 function registerFromGroup(){const g=mixCurrentGroup;if(!g)return;if(g.ids.length!==2){$('mixWordA').value=WORDS[g.ids[0]-1].en;$('mixWordB').value=WORDS[g.ids[1]-1].en;changeMixTab('mine');$('mixWordA').focus();toast('ペアの2語を確認・変更して登録してください');return}registerPair(g.ids[0],g.ids[1]);renderMixList();openMixGroup(g)}
-function beginMixDrill(){if(!mixCurrentGroup)return;mixDrillGroupId=mixCurrentGroup.id;mixDrillQueue=shuffle([...mixCurrentGroup.ids,...mixCurrentGroup.ids]);mixDrillPos=0;mixDrillGood=0;showSection('mixDrill');renderMixDrill()}
-function renderMixDrill(){if(mixDrillPos>=mixDrillQueue.length){$('mixResultPct').textContent=pct(mixDrillGood,mixDrillQueue.length);$('mixResultText').textContent=`${mixDrillQueue.length}問中 ${mixDrillGood}問が「区別できた」`;showSection('mixResult');return}mixDrillShown=false;const w=WORDS[mixDrillQueue[mixDrillPos]-1];$('mixDrillPosition').textContent=`${mixDrillPos+1} / ${mixDrillQueue.length}`;$('mixDrillBar').style.width=(mixDrillPos/mixDrillQueue.length*100)+'%';$('mixDrillNo').textContent='No.'+w.id;$('mixDrillWord').textContent=w.en;$('mixDrillAnswerBtn').classList.remove('hidden');$('mixDrillFeedback').classList.add('hidden')}
-function markMixDrill(good){if(!mixDrillShown)return;const st=state.mixPractice[mixDrillGroupId]||{good:0,bad:0};if(good){mixDrillGood++;st.good++}else st.bad++;st.lastAt=new Date().toISOString();state.mixPractice[mixDrillGroupId]=st;safeSave();mixDrillPos++;renderMixDrill()}
+function beginMixDrill(){
+ if(!mixCurrentGroup)return;
+ mixDrillMode='group';mixDrillGroupId=mixCurrentGroup.id;
+ mixDrillQueue=shuffle([...mixCurrentGroup.ids,...mixCurrentGroup.ids]);
+ mixDrillPos=0;mixDrillGood=0;mixDrillMissIds=[];
+ showSection('mixDrill');renderMixDrill();
+}
+function beginAllMixDrill(missedOnly=false){
+ // Distinct word IDs only. Every registered confusion pair contributes both words.
+ const ids=missedOnly?[...mixLastMissIds]:mixedUniqueIds();
+ if(!ids.length){toast('混同ペアを登録すると総合テストができます');return}
+ mixDrillMode='all';mixDrillGroupId='all';mixDrillQueue=shuffle(ids);
+ mixDrillPos=0;mixDrillGood=0;mixDrillMissIds=[];
+ showSection('mixDrill');renderMixDrill();
+}
+function renderMixDrill(){
+ if(mixDrillPos>=mixDrillQueue.length){finishMixDrill();return}
+ mixDrillShown=false;
+ const w=WORDS[mixDrillQueue[mixDrillPos]-1];
+ $('mixDrillModeLabel').textContent=mixDrillMode==='all'?'混同単語・総合Recall':'個別ペア練習';
+ $('mixDrillPosition').textContent=`${mixDrillPos+1} / ${mixDrillQueue.length}`;
+ $('mixDrillBar').style.width=(mixDrillPos/mixDrillQueue.length*100)+'%';
+ $('mixDrillNo').textContent='No.'+w.id;$('mixDrillWord').textContent=w.en;
+ $('mixDrillAnswerBtn').classList.remove('hidden');$('mixDrillFeedback').classList.add('hidden');
+}
+function finishMixDrill(){
+ const total=mixDrillQueue.length;
+ $('mixResultPct').textContent=pct(mixDrillGood,total);
+ $('mixResultText').textContent=(mixDrillMode==='all'?'全混同単語テスト':'個別ペア練習')+`：${total}問中 ${mixDrillGood}問が「区別できた」`;
+ const area=$('mixResultWrong');area.innerHTML='';
+ const misses=[...new Set(mixDrillMissIds)];
+ mixLastMissIds=misses;
+ area.classList.toggle('hidden',!misses.length);
+ if(misses.length){
+   const h=document.createElement('div');h.className='sectionTitle';h.textContent=`今回まだ混同した ${misses.length}語`;area.appendChild(h);
+   for(const id of misses){const w=WORDS[id-1],row=document.createElement('div');row.className='mixMissItem';row.textContent=`No.${id} ${w.en} — ${w.ja}`;area.appendChild(row)}
+ }
+ $('mixRetryWrong').classList.toggle('hidden',!(mixDrillMode==='all'&&misses.length>0));
+ showSection('mixResult');
+}
+function markMixDrill(good){
+ if(!mixDrillShown)return;
+ const id=mixDrillQueue[mixDrillPos];
+ if(good)mixDrillGood++;else mixDrillMissIds.push(id);
+ if(mixDrillMode==='all'){
+   const st=state.mixAllStats[id]||{attempts:0,good:0,bad:0};
+   st.attempts++;if(good)st.good++;else st.bad++;
+   st.lastGood=good;st.lastAt=new Date().toISOString();state.mixAllStats[id]=st;
+ }else{
+   const st=state.mixPractice[mixDrillGroupId]||{good:0,bad:0};
+   if(good)st.good++;else st.bad++;
+   st.lastAt=new Date().toISOString();state.mixPractice[mixDrillGroupId]=st;
+ }
+ safeSave();mixDrillPos++;renderMixDrill();
+}
+$('mixStartAll').onclick=()=>beginAllMixDrill();
+$('mixRetryWrong').onclick=()=>beginAllMixDrill(true);
 $('mixOpen').onclick=openMix;$('mixHome').onclick=()=>{showSection('home');updateDashboard()};$('mixFilter').oninput=()=>{mixLimit=40;renderMixList()};$('mixMore').onclick=()=>{mixLimit+=40;renderMixList()};$('mixDetailClose').onclick=()=>{$('mixDetail').classList.add('hidden')};
 for(const b of document.querySelectorAll('[data-mixtab]'))b.onclick=()=>changeMixTab(b.dataset.mixtab);
+function installManualWordSearch(inputId,resultsId){
+ const input=$(inputId),box=$(resultsId);
+ input.addEventListener('input',()=>{
+   box.innerHTML='';if(!input.value.trim())return;
+   const matches=searchWords(input.value,null,8);
+   for(const w of matches){const btn=document.createElement('button');btn.type='button';btn.textContent=`No.${w.id} ${w.en} — ${w.ja}`;
+     btn.onclick=()=>{input.value=w.en;box.innerHTML=''};box.appendChild(btn)}
+ });
+ input.addEventListener('change',()=>{if(findWord(input.value))box.innerHTML=''});
+}
+installManualWordSearch('mixWordA','mixChoicesA');installManualWordSearch('mixWordB','mixChoicesB');
 $('mixAddPair').onclick=()=>{const a=findWord($('mixWordA').value),b=findWord($('mixWordB').value);if(!a||!b){toast('英単語または番号を正確に入力してください');return}if(registerPair(a.id,b.id)){mixTab='mine';changeMixTab('mine')}};
 $('mixRegisterFromGroup').onclick=registerFromGroup;$('mixStartDrill').onclick=beginMixDrill;
 $('mixDrillAnswerBtn').onclick=()=>{mixDrillShown=true;$('mixDrillAnswer').textContent=WORDS[mixDrillQueue[mixDrillPos]-1].ja;$('mixDrillAnswerBtn').classList.add('hidden');$('mixDrillFeedback').classList.remove('hidden')};
 $('mixDrillGood').onclick=()=>markMixDrill(true);$('mixDrillMiss').onclick=()=>markMixDrill(false);
 $('mixDrillQuit').onclick=()=>{showSection('mix');renderMixList()};$('mixResultBack').onclick=()=>{showSection('mix');renderMixList()};
 // Backup/import must preserve old SRS card structure as well as new optional confusion data.
-$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({version:'3.1',exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='systan2027_progress_v3_1.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)};
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({version:'3.2',exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='systan2027_progress_v3_2.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)};
 $('importBtn').onclick=()=>$('importInput').click();$('importInput').onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text()),s=j.state||j;if(!s.cards||typeof s.cards!=='object')throw Error('invalid');if(!confirm('読み込む進捗で現在の学習履歴を置き換えます。続けますか？')){e.target.value='';return}state=normalizeState(s);safeSave();$('scope').value=state.settings.scope||'s12';for(const [id,k]of [['todayOrder','todayOrder'],['freeOrder','freeOrder'],['quizOrder','quizOrder']])$(id).value=state.settings[k]||'random';updateDashboard();toast('進捗を読み込みました')}catch(err){toast('進捗ファイルを読み込めませんでした')}e.target.value=''};
-$('resetBtn').onclick=()=>{if(confirm('SRS・混同ペアを含む学習履歴をすべてリセットしますか？')){state=normalizeState({cards:{},settings:{...state.settings},meta:{day:todayKey(),newToday:[],legacyChecked:true},quiz:{},confusions:{},mixPractice:{}});safeSave();updateDashboard();toast('学習履歴をリセットしました')}};
+$('resetBtn').onclick=()=>{if(confirm('SRS・混同ペアを含む学習履歴をすべてリセットしますか？')){state=normalizeState({cards:{},settings:{...state.settings},meta:{day:todayKey(),newToday:[],legacyChecked:true},quiz:{},confusions:{},mixPractice:{},mixAllStats:{}});safeSave();updateDashboard();toast('学習履歴をリセットしました')}};
 // Initial state restoration — retains exact same KEY as versions 1/2.
 safeLoad();$('scope').value=state.settings.scope||'s12';for(const [id,key]of [['todayOrder','todayOrder'],['freeOrder','freeOrder'],['quizOrder','quizOrder']])$(id).value=state.settings[key]||'random';updateDashboard();
 </script>
