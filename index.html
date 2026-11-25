@@ -151,11 +151,29 @@ html,body{background:#f3f8fa!important;color:var(--text)!important;color-scheme:
 .restoredPhraseJa{margin:8px 0;color:#48656e;font-size:14px;line-height:1.6}
 .restoredPhrasePrompt{font-size:26px;font-weight:800;color:#214657;line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
 @media(max-width:420px){.restoredCatalogActions button{font-size:11px}.restoredPhrasePrompt{font-size:23px}}
+
+/* v3.3.1: keep the original answer visible while choosing a confused word. */
+.mixCurrentCard{
+  position:sticky;
+  top:calc(env(safe-area-inset-top) + 6px);
+  z-index:5;
+  border:1px solid #b8d8cf;
+  border-radius:12px;
+  background:#eaf7f2;
+  box-shadow:0 3px 12px rgba(14,74,61,.10);
+  padding:10px 12px;
+  margin:10px 0 12px;
+  color:#163e38;
+}
+.mixCurrentLabel{color:#417a70;font-size:11px;font-weight:700;margin-bottom:5px}
+.mixCurrentWords{display:flex;gap:8px 14px;align-items:baseline;flex-wrap:wrap;line-height:1.4}
+.mixCurrentWords strong{font-size:19px;overflow-wrap:anywhere}
+.mixCurrentWords span{font-size:16px;font-weight:800;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
 <div class="shell">
-  <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・混同克服 v3.3・機能復旧</small></div><small id="dateLabel"></small></div>
+  <div class="brand"><div><h1>シス単 SRS</h1><small>2027 words・混同克服 v3.3.1・機能復旧</small></div><small id="dateLabel"></small></div>
 
   <section id="home">
     <div class="card">
@@ -309,6 +327,10 @@ html,body{background:#f3f8fa!important;color:var(--text)!important;color-scheme:
     </div>
     <div id="confusionPrompt" class="mixPrompt hidden">
       <div class="mixPromptTitle">何の単語と混同した？ <span class="newPill">任意</span></div>
+      <div class="mixCurrentCard" aria-label="出題中の単語と正しい意味">
+        <div class="mixCurrentLabel">現在の問題（正しい意味）</div>
+        <div class="mixCurrentWords"><strong id="confusionCurrentEn"></strong><span id="confusionCurrentJa"></span></div>
+      </div>
       <div class="smallHint">混同した相手を選ぶとペアを登録し、この問題を自動的に「忘れた」と判定して次へ進みます。</div>
       <div id="confusionSuggestions" class="mixSuggest"></div>
       <input id="confusionSearch" class="mixSearch" type="search" placeholder="日本語訳・英単語・番号（例：ひどい）" autocomplete="off">
@@ -525,6 +547,10 @@ function searchWords(q,excluded,limit=14){
 // Optional entry: evaluating normally never opens the confusion selector.
 function setConfusionPrompt(id){
  if(!recallShown||waitingConfusion||recallQueue[recallPos]?.id!==id)return;
+ // Preserve the visible English word and its correct Japanese meaning throughout selection.
+ const current=WORDS[id-1];
+ $('confusionCurrentEn').textContent=`No.${current.id} ${current.en}`;
+ $('confusionCurrentJa').textContent=$('recallAnswer').textContent;
  waitingConfusion=true;$('answerPanel').classList.add('hidden');$('confusionPrompt').classList.remove('hidden');
  populateRivalPicker(id,'confusionSuggestions','confusionSearch','confusionMatches',other=>{
    if(!waitingConfusion||!recallShown||recallQueue[recallPos]?.id!==id)return;
